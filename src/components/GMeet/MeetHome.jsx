@@ -53,16 +53,24 @@ const MeetHome = () => {
           <div className="w-8 h-8 rounded-full flex justify-center items-center">
             <img src={meet} alt="Google Meet Logo" />
           </div>
-          <span className="text-gray-800 text-lg font-semibold">Google Meet</span>
+          <span className="text-gray-800 text-lg font-semibold">
+            Google Meet
+          </span>
         </div>
 
         {/* Header Icons */}
         <div className="flex items-center gap-4">
           <span className="text-gray-600 text-sm">1:18 PM · Wed, Jan 22</span>
           <div className="flex gap-3">
-            <button className="w-6 h-6 flex justify-center items-center text-gray-600">❓</button>
-            <button className="w-6 h-6 flex justify-center items-center text-gray-600">⚙️</button>
-            <button className="w-6 h-6 flex justify-center items-center text-gray-600">⋮</button>
+            <button className="w-6 h-6 flex justify-center items-center text-gray-600">
+              ❓
+            </button>
+            <button className="w-6 h-6 flex justify-center items-center text-gray-600">
+              ⚙️
+            </button>
+            <button className="w-6 h-6 flex justify-center items-center text-gray-600">
+              ⋮
+            </button>
             <div className="w-8 h-8 bg-gray-300 rounded-full flex justify-center items-center">
               👤
             </div>
