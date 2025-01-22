@@ -7,8 +7,8 @@ import Chrome from "./components/Chrome";
 import MeetDesktop from "./components/GMeet/MeetDesktop";
 import MeetChrome from "./components/GMeet/MeetChrome";
 import MeetHome from "./components/GMeet/MeetHome";
-import MeetScreem from "./components/GMeet/MeetScreem";
-
+import MeetScreen from "./components/GMeet/MeetScreen";
+import { Route,BrowserRouter as Router, Routes } from "react-router-dom";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -25,7 +25,6 @@ function App() {
         </Routes>
       </Router>
       {/* Change */}
-      
     </>
   );
 }
