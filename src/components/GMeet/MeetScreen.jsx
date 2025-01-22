@@ -16,7 +16,7 @@ const MeetScreen = () => {
   return (
     <div className="bg-white h-screen flex flex-col">
       {/* Top Tabs */}
-      <Navbar />
+      <Navbar link={'https://www.meet.google.com/hay-daym-eet'}/>
 
       {/* MEET UI */}
       <div className="h-[90%] w-full flex flex-col items-center justify-center">

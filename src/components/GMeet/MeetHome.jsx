@@ -11,40 +11,7 @@ const MeetHome = () => {
 
   return (
     <div className="bg-white h-screen flex flex-col">
-      {/* Top Tabs */}
-      <div className="flex items-center px-4 py-2 bg-gray-100 text-sm border-b border-gray-300">
-        <div className="flex items-center gap-3">
-          {/* Back and Refresh Buttons */}
-          <button className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
-            <span className="text-black font-bold">{`←`}</span>
-          </button>
-          <button className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
-            <span className="text-black font-bold">{`⟳`}</span>
-          </button>
-        </div>
-        <div className="flex-grow flex items-center ml-4">
-          <input
-            type="text"
-            placeholder="https://meet.google.com/landing"
-            className="flex-grow bg-gray-100 text-gray-600 placeholder-gray-500 py-2 px-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
-        {/* Star and Download Buttons */}
-        <div className="flex items-center gap-3 ml-4">
-          {/* Star Button */}
-          <button className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
-            <span className="text-gray-600">★</span>
-          </button>
-          {/* Download Button */}
-          <button className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
-            <span className="text-gray-600">⬇️</span>
-          </button>
-        </div>
-        {/* Profile Icon */}
-        <div className="w-8 h-8 rounded-full bg-gray-300 ml-4 flex items-center justify-center">
-          <span className="text-sm font-bold">👤</span>
-        </div>
-      </div>
+      <Navbar link={'https://www.meet.google.com/landing'}/>
 
       {/* Header */}
       <div className="flex items-center justify-between px-6 py-4 border-b border-gray-300">
