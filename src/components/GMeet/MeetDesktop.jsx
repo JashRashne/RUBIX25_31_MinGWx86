@@ -5,8 +5,15 @@ import wordlogo from "../../assets/msword.png";
 import thispc from '../../assets/thispc.png'
 import folder from '../../assets/folder.png'
 import recyclebin from '../../assets/recyclebin.png'
+import { useNavigate } from 'react-router-dom';
+
 
 const MeetDesktop = () => {
+
+
+  const navigate = useNavigate();
+
+
   return (
     <div class="bg-[url('https://d7hftxdivxxvm.cloudfront.net/?quality=80&resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F2RNK1P0BYVrSCZEy_Sd1Ew%252F3417757448_4a6bdf36ce_o.jpg&width=1820')] bg-cover bg-center h-screen w-screen flex flex-col relative">
       <div className="w-full h-[94%]">
@@ -45,8 +52,9 @@ const MeetDesktop = () => {
           src={chromelogo}
           height={50}
           width={50}
-          className="absolute left-5 top-[260px]"
+          className="absolute left-5 top-[260px] cursor-pointer"
           alt=""
+          onClick={() => navigate('/meet-chrome')}
         />
         <span className="absolute left-5 top-[310px] text-sm text-white">Chrome</span>
 

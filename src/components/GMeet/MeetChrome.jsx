@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const MeetChrome = () => {
+  const navigate = useNavigate();
+  const [searchValue, setSearchValue] = useState(""); // State for the input value
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      // Check if the input is the correct URL
+      if (searchValue === "meet.google.com") {
+        navigate("/meet-home"); // Navigate to /meet-home if it matches
+      }
+    }
+  };
+
   return (
     <div className="bg-white h-screen flex flex-col text-black">
       {/* Top Tabs */}
@@ -18,16 +31,17 @@ const MeetChrome = () => {
           <input
             type="text"
             placeholder="Search or type a URL"
+            value={searchValue} // Bind the input value to the state
+            onChange={(e) => setSearchValue(e.target.value)} // Update state on input change
+            onKeyDown={handleKeyPress} // Call handleKeyPress when the user presses a key
             className="flex-grow bg-gray-100 text-gray-600 placeholder-gray-500 py-2 px-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
         {/* Star and Download Buttons */}
         <div className="flex items-center gap-3 ml-4">
-          {/* Star Button */}
           <button className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
             <span className="text-gray-600">★</span>
           </button>
-          {/* Download Button */}
           <button className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
             <span className="text-gray-600">⬇️</span>
           </button>
@@ -37,8 +51,6 @@ const MeetChrome = () => {
           <span className="text-sm font-bold">👤</span>
         </div>
       </div>
-
-
 
       {/* Central Content */}
       <div className="flex flex-col items-center justify-center flex-grow">
