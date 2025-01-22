@@ -8,8 +8,8 @@ import MeetDesktop from "./components/GMeet/MeetDesktop";
 import MeetChrome from "./components/GMeet/MeetChrome";
 import MeetHome from "./components/GMeet/MeetHome";
 import MeetScreen from "./components/GMeet/MeetScreen";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import GmailScreen from "./components/GmailScreen";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -18,7 +18,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<Desktop />} />
+          <Route path="/" element={<GmailScreen />} />
           <Route path="/meet-desktop" element={<MeetDesktop />} />
           <Route path="/meet-chrome" element={<MeetChrome />} />
           <Route path="/meet-home" element={<MeetHome />} />
@@ -26,7 +26,6 @@ function App() {
         </Routes>
       </Router>
       {/* Change */}
-
     </>
   );
 }

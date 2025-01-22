@@ -15,6 +15,13 @@ import compose from "../assets/pen.png";
 import next from "../assets/next.png";
 import back from "../assets/back.png";
 import down from "../assets/down-arrow.png";
+import attach from "../assets/attach-document.png";
+import link from "../assets/link.png";
+import font from "../assets/color.png";
+import drive from "../assets/google-drive.png";
+import image from "../assets/image.png";
+import smile from "../assets/smile.png";
+import check from "../assets/check.png";
 import Navbar from "./Navbar";
 // import drafts from "../assets/send.png";
 const Tab = ({ label, isActive, onClick }) => (
@@ -30,6 +37,40 @@ const Tab = ({ label, isActive, onClick }) => (
 const GmailScreen = () => {
   const [activeTab, setActiveTab] = useState("Primary");
   const [activeButton, setActiveButton] = useState("inbox");
+  const [open, setOpen] = useState(false);
+  const [showLabel, setShowLabel] = useState(false);
+  const [toastVisible, setToastVisible] = useState(false);
+
+  const handleFocus = () => {
+    setShowLabel(true);
+  };
+
+  const handleBlur = (e) => {
+    if (!e.target.value) {
+      setShowLabel(false);
+    }
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleSend = () => {
+    // Simulate sending the email
+    setToastVisible(true); // Show toast notification
+
+    // Hide the dialog box
+    setOpen(false);
+
+    // Automatically hide the toast after 3 seconds
+    setTimeout(() => {
+      setToastVisible(false);
+    }, 3000);
+  };
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -48,7 +89,10 @@ const GmailScreen = () => {
           </div>
           <nav className="mt-4 space-y-1 flex flex-col justify-start">
             <div className="">
-              <button className="flex items-center gap-4 font-medium text-gray-700 bg-[#c2e7ff] p-4 mb-4 ml-4 rounded-[1.5rem]">
+              <button
+                onClick={handleOpen}
+                className="flex items-center gap-4 font-medium text-gray-700 bg-[#c2e7ff] p-4 mb-4 ml-4 rounded-[1.5rem]"
+              >
                 <img src={compose} alt="compose" className="w-5 opacity-90" />
                 Compose
               </button>
@@ -279,6 +323,110 @@ const GmailScreen = () => {
             </div>
           </footer>
         </div>
+        {/* Dialog Box */}
+        {open && (
+          <div className="fixed bottom-10 right-10 w-[35rem] h-[35rem] rounded-xl flex justify-center items-center z-50">
+            <div
+              className="relative bg-white w-full h-full
+             rounded-xl overflow-hidden shadow-lg"
+            >
+              {/* Dialog Header */}
+              <div className="py-2 px-4 bg-gray-100 flex justify-between items-center border-b">
+                <h2 className="text-md text-gray-700 font-semibold">
+                  New Message
+                </h2>
+                <button
+                  className="text-gray-500 hover:text-gray-800"
+                  onClick={handleClose}
+                >
+                  ✕
+                </button>
+              </div>
+
+              {/* Dialog Content */}
+              <div className="space-y-1 px-4">
+                {/* Conditionally show "To:" */}
+                <div className="flex items-center">
+                  {showLabel && (
+                    <label className="block text-gray-600  border-b border-gray-300 p-2">
+                      To:
+                    </label>
+                  )}
+                  <input
+                    type="email"
+                    placeholder="Recipients"
+                    className="w-full border-b border-gray-300 p-2 focus:outline-none"
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                  />
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="email"
+                    placeholder="Subject"
+                    className="w-full border-b border-gray-300 p-2 focus:outline-none"
+                  />
+                </div>
+                <textarea
+                  placeholder=""
+                  className="w-full p-2 h-[20rem] resize-none focus:outline-none"
+                ></textarea>
+              </div>
+
+              {/* Dialog Footer */}
+              <div className="absolute flex items-center space-x-1 bottom-0 left-0 p-4 w-full">
+                {/* <button
+                  className="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300"
+                  onClick={handleClose}
+                >
+                  Close
+                </button> */}
+                <button
+                  onClick={handleSend}
+                  className="bg-blue-500 text-white px-8 py-2 rounded-full hover:bg-blue-600"
+                >
+                  Send
+                </button>{" "}
+                <button className="p-2 text-gray-600 rounded-md hover:bg-gray-200">
+                  <span>
+                    <img src={font} alt="font" className="w-4 opacity-80" />
+                  </span>
+                </button>
+                <button className="p-2 text-gray-600 rounded-md hover:bg-gray-200">
+                  <span className="font-bold">
+                    <img src={attach} alt="attach" className="w-4 opacity-80" />
+                  </span>
+                </button>
+                <button className="p-2 text-gray-600 rounded-md hover:bg-gray-200">
+                  <span>
+                    <img src={link} alt="link" className="w-4 opacity-80" />
+                  </span>
+                </button>
+                <button className="p-2 text-gray-600 rounded-md hover:bg-gray-200">
+                  <span>
+                    <img src={drive} alt="drive" className="w-4 opacity-80" />
+                  </span>
+                </button>
+                <button className="p-2 text-gray-600 rounded-md hover:bg-gray-200">
+                  <span>
+                    <img src={image} alt="image" className="w-4 opacity-80" />
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Toast Notification */}
+        {toastVisible && (
+          <div className="fixed w-[15rem] bottom-4 right-4 bg-white flex items-center justify-start gap-4 px-4 py-4 rounded shadow-lg">
+            <span>
+              {" "}
+              <img src={check} alt="check" className="w-6" />
+            </span>
+            <span> Email Sent!</span>
+          </div>
+        )}
       </div>
     </>
   );
