@@ -6,7 +6,8 @@ import Desktop from "./components/Desktop";
 import Chrome from "./components/Chrome";
 import MeetHome from "./components/MeetHome";
 import MeetScreen from "./components/MeetScreen";
-import Test from "./components/Test";
+import GmailScreen from "./components/GmailScreen";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -14,6 +15,8 @@ function App() {
   return (
     <>
       <MeetScreen />
+      {/* <Navbar /> */}
+      {/* <GmailScreen /> */}
     </>
   );
 }
