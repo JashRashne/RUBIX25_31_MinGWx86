@@ -7,7 +7,8 @@ import Chrome from "./components/Chrome";
 import MeetDesktop from "./components/GMeet/MeetDesktop";
 import MeetChrome from "./components/GMeet/MeetChrome";
 import MeetHome from "./components/GMeet/MeetHome";
-import MeetScreem from "./components/GMeet/MeetScreem";
+import MeetScreen from "./components/GMeet/MeetScreen";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
         </Routes>
       </Router>
       {/* Change */}
-      
+
     </>
   );
 }

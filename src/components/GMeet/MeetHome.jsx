@@ -1,7 +1,14 @@
 import React from "react";
-import meet from '../assets/meet.png';
+import meet from '../../assets/meet.png';
+import { useNavigate } from 'react-router-dom';
+
 
 const MeetHome = () => {
+
+
+  const navigate = useNavigate();
+
+
   return (
     <div className="bg-white h-screen flex flex-col">
       {/* Top Tabs */}
@@ -77,7 +84,10 @@ const MeetHome = () => {
 
           {/* Buttons */}
           <div className="flex items-center gap-4">
-            <button className="bg-blue-500 text-white text-sm font-medium px-6 py-3 rounded-md shadow-md hover:bg-blue-600">
+            <button className="bg-blue-500 text-white text-sm font-medium px-6 py-3 rounded-md shadow-md hover:bg-blue-600"
+
+            onClick={() => navigate('/meet-screen')}
+            >
               + New meeting
             </button>
             <div className="flex items-center border border-gray-300 rounded-md overflow-hidden">
