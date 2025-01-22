@@ -5,13 +5,14 @@ import './App.css'
 import Desktop from './components/Desktop'
 import Chrome from './components/Chrome'
 import MeetHome from './components/MeetHome'
+import MeetScreen from './components/MeetScreen'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
    <>
-      <MeetHome/>
+      <MeetScreen/>
    </>
   )
 }
