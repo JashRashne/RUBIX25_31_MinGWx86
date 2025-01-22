@@ -8,9 +8,9 @@ import MeetDesktop from "./components/GMeet/MeetDesktop";
 import MeetChrome from "./components/GMeet/MeetChrome";
 import MeetHome from "./components/GMeet/MeetHome";
 import MeetScreen from "./components/GMeet/MeetScreen";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import URLScanner from "./components/URLScanner";
-
+import GmailScreen from "./components/GmailScreen";
 
 function App() {
   const [count, setCount] = useState(0);
