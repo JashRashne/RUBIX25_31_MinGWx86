@@ -4,19 +4,28 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Desktop from "./components/Desktop";
 import Chrome from "./components/Chrome";
-import MeetHome from "./components/MeetHome";
-import MeetScreen from "./components/MeetScreen";
-import GmailScreen from "./components/GmailScreen";
-import Navbar from "./components/Navbar";
+import MeetDesktop from "./components/GMeet/MeetDesktop";
+import MeetChrome from "./components/GMeet/MeetChrome";
+import MeetHome from "./components/GMeet/MeetHome";
+import MeetScreem from "./components/GMeet/MeetScreem";
+
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <MeetScreen />
-      {/* <Navbar /> */}
-      {/* <GmailScreen /> */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Desktop />} />
+          <Route path="/meet-desktop" element={<MeetDesktop />} />
+          <Route path="/meet-chrome" element={<MeetChrome />} />
+          <Route path="/meet-home" element={<MeetHome />} />
+          <Route path="/meet-screen" element={<MeetScreen />} />
+        </Routes>
+      </Router>
+      {/* Change */}
+      
     </>
   );
 }
