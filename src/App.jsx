@@ -9,6 +9,7 @@ import MeetChrome from "./components/GMeet/MeetChrome";
 import MeetHome from "./components/GMeet/MeetHome";
 import MeetScreen from "./components/GMeet/MeetScreen";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import URLScanner from "./components/URLScanner";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/meet-chrome" element={<MeetChrome />} />
           <Route path="/meet-home" element={<MeetHome />} />
           <Route path="/meet-screen" element={<MeetScreen />} />
+          <Route path="/url-scan" element={<URLScanner />} />
         </Routes>
       </Router>
       {/* Change */}
