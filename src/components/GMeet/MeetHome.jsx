@@ -1,17 +1,41 @@
 import React from "react";
-import meet from '../../assets/meet.png';
-import { useNavigate } from 'react-router-dom';
-
+import meet from "../../assets/meet.png";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../Navbar";
+import arrow from '../../assets/arrow1.png'
 
 const MeetHome = () => {
-
-
   const navigate = useNavigate();
 
-
   return (
-    <div className="bg-white h-screen flex flex-col">
-      <Navbar link={'https://www.meet.google.com/landing'}/>
+    <div className="bg-white h-screen flex flex-col relative">
+      <Navbar link={"https://www.meet.google.com/landing"} />
+
+      {/* ARROW AND INSTRUCTION */}
+      <img
+        src={arrow}
+        height={50}
+        width={150}
+        className="absolute left-[280px] top-[150px] rotate-[200deg]"
+        alt=""
+      />
+
+      <div className="h-[200px] w-[350px] bg-white border-2 border-black absolute left-[400px] top-[60px] rounded-xl flex flex-col">
+        <div className="w-full h-[60%]  flex flex-col items-center justify-center">
+          <span className="font-black text-lg pt-2">
+            USE THESE TO JOIN MEETINGS
+          </span>
+          <span className=" mb-2 text-sm text-center px-4 leading-tight">
+            Use the "New Meeting" button to create your own meeting and enter a meeting code given to you by someone in the other box and hit "Join" in order to join another meeting.
+          </span>
+        </div>
+        <div className="w-full h-[40%]  flex items-center justify-center">
+          <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+            <i class="ri-volume-up-line text-xl"></i>
+            <span className="px-3 text-xm font-bold">LISTEN INSTRUCTION </span>
+          </div>
+        </div>
+      </div>
 
       {/* Header */}
       <div className="flex items-center justify-between px-6 py-4 border-b border-gray-300">
@@ -59,9 +83,9 @@ const MeetHome = () => {
 
           {/* Buttons */}
           <div className="flex items-center gap-4">
-            <button className="bg-blue-500 text-white text-sm font-medium px-6 py-3 rounded-md shadow-md hover:bg-blue-600"
-
-            onClick={() => navigate('/meet-screen')}
+            <button
+              className="bg-blue-500 text-white text-sm font-medium px-6 py-3 rounded-md shadow-md hover:bg-blue-600"
+              onClick={() => navigate("/meet-screen")}
             >
               + New meeting
             </button>

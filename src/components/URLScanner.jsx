@@ -7,7 +7,6 @@ const URLScanner = () => {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
 
-  const apiKey = 'l6igKQaBsPmqLjf38nNZVlqflIVTAvgd'; // Replace with your actual API key from IPQualityScore
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +21,7 @@ const URLScanner = () => {
 
     try {
       const response = await axios.get(
-        `https://www.ipqualityscore.com/api/json/url/${apiKey}/${url}`
+        `https://99c3-103-160-70-195.ngrok-free.app/check-url?url=${url}`
       );
       const data = response.data;
 

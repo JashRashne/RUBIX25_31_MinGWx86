@@ -7,15 +7,15 @@ import starred from "../../assets/star.png";
 import backFull from "../../assets/backFull.png";
 import download from "../../assets/downloads.png";
 
-const MeetChrome = () => {
+const GmailChrome = () => {
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState(""); // State for the input value
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       // Check if the input is the correct URL
-      if (searchValue == "meet.google.com") {
-        navigate("/meet-home"); // Navigate to /meet-home if it matches
+      if (searchValue == "mail.google.com") {
+        navigate("/gmail-screen"); // Navigate to /meet-home if it matches
       }
     }
   };
@@ -87,7 +87,7 @@ const MeetChrome = () => {
       <div className="h-[180px] w-[390px] bg-gray-50 border-2 border-black absolute right-[50px] top-[200px] rounded-xl flex flex-col z-20">
         <div className="w-full h-[60%]  flex flex-col items-center justify-center">
           <span className="font-black text-lg">
-            TYPE "meet.google.com" and hit ENTER
+            TYPE "mail.google.com" and hit ENTER
           </span>
           <span className=" mb-2 text-sm text-center px-4 leading-tight">
             What we're typing here is called the web address of the website
@@ -137,4 +137,4 @@ const MeetChrome = () => {
   );
 };
 
-export default MeetChrome;
+export default GmailChrome;

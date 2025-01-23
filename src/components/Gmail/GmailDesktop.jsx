@@ -9,7 +9,7 @@ import arrow from '../../assets/arrow2.png'
 import { useNavigate } from 'react-router-dom';
 
 
-const MeetDesktop = () => {
+const GmailDesktop = () => {
 
 
   const navigate = useNavigate();
@@ -80,7 +80,7 @@ const MeetDesktop = () => {
           width={50}
           className="absolute left-5 top-[260px] cursor-pointer"
           alt=""
-          onClick={() => navigate('/meet-chrome')}
+          onClick={() => navigate('/gmail-chrome')}
         />
         <span className="absolute left-5 top-[310px] text-sm text-white">Chrome</span>
 
@@ -107,4 +107,4 @@ const MeetDesktop = () => {
   );
 };
 
-export default MeetDesktop;
+export default GmailDesktop;

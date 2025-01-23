@@ -1,29 +1,31 @@
 import React, { useState } from "react";
-import question from "../assets/question.png";
-import setting from "../assets/setting.png";
-import menu from "../assets/menu.png";
-import search from "../assets/search.png";
-import gmailLogo from "../assets/gmailLogo.png";
-import inbox from "../assets/mail-inbox-app.png";
-import starred from "../assets/star.png";
-import snoozed from "../assets/clock.png";
-import sent from "../assets/send.png";
-import drafts from "../assets/file.png";
-import refresh from "../assets/refresh.png";
-import more from "../assets/ellipsis.png";
-import compose from "../assets/pen.png";
-import next from "../assets/next.png";
-import back from "../assets/back.png";
-import down from "../assets/down-arrow.png";
-import attach from "../assets/attach-document.png";
-import link from "../assets/link.png";
-import font from "../assets/color.png";
-import drive from "../assets/google-drive.png";
-import image from "../assets/image.png";
-import smile from "../assets/smile.png";
-import check from "../assets/check.png";
-import Navbar from "./Navbar";
-// import drafts from "../assets/send.png";
+import question from "../../assets/question.png";
+import setting from "../../assets/setting.png";
+import menu from "../../assets/menu.png";
+import search from "../../assets/search.png";
+import gmailLogo from "../../assets/gmailLogo.png";
+import inbox from "../../assets/mail-inbox-app.png";
+import starred from "../../assets/star.png";
+import snoozed from "../../assets/clock.png";
+import sent from "../../assets/send.png";
+import drafts from "../../assets/file.png";
+import refresh from "../../assets/refresh.png";
+import more from "../../assets/ellipsis.png";
+import compose from "../../assets/pen.png";
+import next from "../../assets/next.png";
+import back from "../../assets/back.png";
+import down from "../../assets/down-arrow.png";
+import attach from "../../assets/attach-document.png";
+import link from "../../assets/link.png";
+import font from "../../assets/color.png";
+import drive from "../../assets/google-drive.png";
+import image from "../../assets/image.png";
+import smile from "../../assets/smile.png";
+import check from "../../assets/check.png";
+import Navbar from "../Navbar";
+import arrow from "../../assets/arrow1.png";
+import arrow2 from "../../assets/arrow3.png";
+// import drafts from "../../assets/send.png";
 const Tab = ({ label, isActive, onClick }) => (
   <button
     className={`w-full py-3 px-4 text-[0.95rem] font-medium rounded-t-lg ${
@@ -40,6 +42,7 @@ const GmailScreen = () => {
   const [open, setOpen] = useState(false);
   const [showLabel, setShowLabel] = useState(false);
   const [toastVisible, setToastVisible] = useState(false);
+  const [step, setStep] = useState(1);
 
   const handleFocus = () => {
     setShowLabel(true);
@@ -78,8 +81,188 @@ const GmailScreen = () => {
   return (
     <>
       <Navbar link={"https://mail.google.com/mail/u/0/#inbox"} />
-      <div className="flex h-screen bg-gray-100">
-        {/* Top Tabs */}
+      <div className="flex h-screen bg-gray-100 relative">
+        {/* ARROW AND INSTRUCTIONS */}
+
+        <div className={`${step == 1 ? "flex" : "hidden"}`}>
+          <img
+            src={arrow}
+            height={50}
+            width={150}
+            className="absolute left-[220px] top-[80px] rotate-[-80deg] z-20"
+            alt=""
+          />
+
+          <div className="h-[200px] w-[350px] bg-white border-2 border-black absolute left-[400px] bottom-[130px] rounded-xl flex flex-col z-20">
+            <div className="w-full h-[60%]  flex flex-col items-center justify-center">
+              <span className="font-black text-lg pt-2">
+                CLICK "COMPOSE" TO WRITE MAIL
+              </span>
+              <span className=" mb-2 text-sm text-center px-4 leading-tight">
+                This button will open a compose tab where in you can send a mail
+                to anyone.
+              </span>
+            </div>
+            <div className="w-full h-[40%]  flex items-center justify-center gap-2">
+              <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+                <i class="ri-volume-up-line text-xl"></i>
+                <span className="px-3 text-xm font-bold">
+                  LISTEN INSTRUCTION{" "}
+                </span>
+              </div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+
+        <div className={`${step == 2 ? "flex" : "hidden"}`}>
+          <img
+            src={arrow2}
+            height={50}
+            width={150}
+            style={{ transform: "scaleX(-1)", rotate: "270deg" }}
+            className="absolute left-[330px] top-[80px]  z-[210]"
+            alt=""
+          />
+
+          <div className="h-[200px] w-[350px] bg-white border-2 border-black absolute left-[100px] bottom-[160px] rounded-xl flex flex-col z-20">
+            <div className="w-full h-[60%]  flex flex-col items-center justify-center">
+              <span className="font-black text-lg pt-2">
+                TYPE THE MAIL HERE
+              </span>
+              <span className=" mb-2 text-sm text-center px-4 leading-tight">
+                This is the text area where you type the actual contents of the
+                mail.
+              </span>
+            </div>
+            <div className="w-full h-[40%]  flex items-center justify-center gap-2">
+              <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+                <i class="ri-volume-up-line text-xl"></i>
+                <span className="px-3 text-xm font-bold">LISTEN</span>
+              </div>
+              <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+                <i class="ri-skip-right-line text-xl"></i>
+                <span
+                  className="px-3 text-xm font-bold"
+                  onClick={() => {
+                    setStep(3);
+                  }}
+                >
+                  NEXT
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={`${step == 3 ? "flex" : "hidden"}`}>
+          <img
+            src={arrow}
+            height={50}
+            width={150}
+            // style={{ transform: "scaleX(-1)", rotate: "270deg" }}
+            className="absolute left-[330px] top-[-15px] rotate-[-150deg]  z-[210]"
+            alt=""
+          />
+
+          <div className="h-[200px] w-[350px] bg-white border-2 border-black absolute left-[100px] bottom-[200px] rounded-xl flex flex-col z-20">
+            <div className="w-full h-[60%]  flex flex-col items-center justify-center">
+              <span className="font-black text-lg pt-2">
+                ENTER THE RECIPIENT'S MAIL ID
+              </span>
+              <span className=" mb-2 text-sm text-center px-4 leading-tight">
+                Enter all the mail addresses to whom you want to send a mail. Different mail addresses are seperated by a space.
+              </span>
+            </div>
+            <div className="w-full h-[40%]  flex items-center justify-center gap-2">
+              <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+                <i class="ri-volume-up-line text-xl"></i>
+                <span className="px-3 text-xm font-bold">LISTEN</span>
+              </div>
+              <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+                <i class="ri-skip-right-line text-xl"></i>
+                <span
+                  className="px-3 text-xm font-bold"
+                  onClick={() => {
+                    setStep(4);
+                  }}
+                >
+                  NEXT
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={`${step == 4 ? "flex" : "hidden"}`}>
+          <img
+            src={arrow}
+            height={50}
+            width={150}
+            // style={{ transform: "scaleX(-1)", rotate: "270deg" }}
+            className="absolute left-[330px] top-[15px] rotate-[-150deg]  z-[210]"
+            alt=""
+          />
+
+          <div className="h-[200px] w-[350px] bg-white border-2 border-black absolute left-[100px] bottom-[170px] rounded-xl flex flex-col z-20">
+            <div className="w-full h-[60%]  flex flex-col items-center justify-center">
+              <span className="font-black text-lg pt-2">
+                ENTER THE SUBJECT
+              </span>
+              <span className=" mb-2 text-sm text-center px-4 leading-tight">
+                Type out the title of your mail so that people know what the mail is about.
+              </span>
+            </div>
+            <div className="w-full h-[40%]  flex items-center justify-center gap-2">
+              <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+                <i class="ri-volume-up-line text-xl"></i>
+                <span className="px-3 text-xm font-bold">LISTEN</span>
+              </div>
+              <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+                <i class="ri-skip-right-line text-xl"></i>
+                <span
+                  className="px-3 text-xm font-bold"
+                  onClick={() => {
+                    setStep(5);
+                  }}
+                >
+                  NEXT
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={`${step == 5 ? "flex" : "hidden"}`}>
+          <img
+            src={arrow}
+            height={50}
+            width={150}
+            className="absolute left-[295px] bottom-[80px] rotate-[100deg] z-[200]"
+            alt=""
+          />
+
+          <div className="h-[200px] w-[350px] bg-white border-2 border-black absolute left-[100px] top-[100px] rounded-xl flex flex-col z-20">
+            <div className="w-full h-[60%]  flex flex-col items-center justify-center">
+              <span className="font-black text-lg pt-2">
+                CLICK "SEND" TO SEND MAIL
+              </span>
+              <span className=" mb-2 text-sm text-center px-4 leading-tight">
+                This button will send the mail to the recipients mentioned.
+              </span>
+            </div>
+            <div className="w-full h-[40%]  flex items-center justify-center gap-2">
+              <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+                <i class="ri-volume-up-line text-xl"></i>
+                <span className="px-3 text-xm font-bold">
+                  LISTEN INSTRUCTION{" "}
+                </span>
+              </div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+
         {/* Sidebar */}
         <aside className="w-64 flex flex-col py-2">
           <div className="flex items-center  px-4 gap-2 py-2 text-gray-400 font-normal text-2xl">
@@ -90,7 +273,7 @@ const GmailScreen = () => {
           <nav className="mt-4 space-y-1 flex flex-col justify-start">
             <div className="">
               <button
-                onClick={handleOpen}
+                onClick={() => {handleOpen(); setStep(2)}}
                 className="flex items-center gap-4 font-medium text-gray-700 bg-[#c2e7ff] p-4 mb-4 ml-4 rounded-[1.5rem]"
               >
                 <img src={compose} alt="compose" className="w-5 opacity-90" />
@@ -382,7 +565,7 @@ const GmailScreen = () => {
                   Close
                 </button> */}
                 <button
-                  onClick={handleSend}
+                  onClick={()=> { handleSend(); setStep(6)}}
                   className="bg-blue-500 text-white px-8 py-2 rounded-full hover:bg-blue-600"
                 >
                   Send
