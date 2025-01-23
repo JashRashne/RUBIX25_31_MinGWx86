@@ -7,6 +7,7 @@ import folder from '../../assets/folder.png'
 import recyclebin from '../../assets/recyclebin.png'
 import arrow from '../../assets/arrow2.png'
 import { useNavigate } from 'react-router-dom';
+import TransitionEffect from "../TransitionEffect";
 
 
 const MeetDesktop = () => {

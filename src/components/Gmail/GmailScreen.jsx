@@ -25,6 +25,8 @@ import check from "../../assets/check.png";
 import Navbar from "../Navbar";
 import arrow from "../../assets/arrow1.png";
 import arrow2 from "../../assets/arrow3.png";
+import axios from "axios";
+import { sub } from "framer-motion/client";
 // import drafts from "../../assets/send.png";
 const Tab = ({ label, isActive, onClick }) => (
   <button
@@ -43,6 +45,10 @@ const GmailScreen = () => {
   const [showLabel, setShowLabel] = useState(false);
   const [toastVisible, setToastVisible] = useState(false);
   const [step, setStep] = useState(1);
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+
 
   const handleFocus = () => {
     setShowLabel(true);
@@ -62,18 +68,56 @@ const GmailScreen = () => {
     setOpen(false);
   };
 
-  const handleSend = () => {
-    // Simulate sending the email
-    setToastVisible(true); // Show toast notification
 
-    // Hide the dialog box
-    setOpen(false);
+  const handleSend = async (mailId, subject, message) => {
 
-    // Automatically hide the toast after 3 seconds
-    setTimeout(() => {
-      setToastVisible(false);
-    }, 3000);
+    console.log(mailId, subject, message);
+    try {
+      // Send the email by hitting the URL
+      const response = await axios.get(`https://99c3-103-160-70-195.ngrok-free.app/send-email`, {
+        params: {
+          receiver_email: mailId,
+          subject: subject,
+          message: message,
+        },
+      });
+
+      console.log(response);
+  
+      // Check if the response is ok
+      if (response.status !== 200) {
+        throw new Error('Failed to send email');
+      }
+
+      const response1 = await axios.get(`https://99c3-103-160-70-195.ngrok-free.app/send-email`, {
+        params: {
+          receiver_email: mailId,
+          subject: `GET A FREE OFFER WORTH RS 1 LAKH`,
+          message: `Congratulations! You have been randomly selected as the lucky winner of our exclusive lottery, and you’ve just won 1 lakh rupees! 🎉 To claim your prize, simply click on the following link: http://localhost:5173/url-education and fill out the required details. This amazing opportunity is only available for a limited time, so act fast to secure your winnings! Don’t miss out on this once-in-a-lifetime chance to enjoy the riches you deserve!`,
+        },
+      });
+  
+      // Check if the response1 is ok
+      if (response1.status !== 200) {
+        throw new Error('Failed to send email');
+      }
+  
+      // Show toast notification
+      setToastVisible(true);
+  
+      // Hide the dialog box
+      setOpen(false);
+  
+      // Automatically hide the toast after 3 seconds
+      setTimeout(() => {
+        setToastVisible(false);
+      }, 3000);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      // Optionally, handle the error (e.g., show an error message)
+    }
   };
+  
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -508,97 +552,67 @@ const GmailScreen = () => {
         </div>
         {/* Dialog Box */}
         {open && (
-          <div className="fixed bottom-10 right-10 w-[35rem] h-[35rem] rounded-xl flex justify-center items-center z-50">
-            <div
-              className="relative bg-white w-full h-full
-             rounded-xl overflow-hidden shadow-lg"
-            >
-              {/* Dialog Header */}
-              <div className="py-2 px-4 bg-gray-100 flex justify-between items-center border-b">
-                <h2 className="text-md text-gray-700 font-semibold">
-                  New Message
-                </h2>
-                <button
-                  className="text-gray-500 hover:text-gray-800"
-                  onClick={handleClose}
-                >
-                  ✕
-                </button>
-              </div>
+        <div className="fixed bottom-10 right-10 w-[35rem] h-[35rem] rounded-xl flex justify-center items-center z-50">
+          <div className="relative bg-white w-full h-full rounded-xl overflow-hidden shadow-lg">
+            {/* Dialog Header */}
+            <div className="py-2 px-4 bg-gray-100 flex justify-between items-center border-b">
+              <h2 className="text-md text-gray-700 font-semibold">New Message</h2>
+              <button className="text-gray-500 hover:text-gray-800" onClick={handleClose}>
+                ✕
+              </button>
+            </div>
 
-              {/* Dialog Content */}
-              <div className="space-y-1 px-4">
-                {/* Conditionally show "To:" */}
-                <div className="flex items-center">
-                  {showLabel && (
-                    <label className="block text-gray-600  border-b border-gray-300 p-2">
-                      To:
-                    </label>
-                  )}
-                  <input
-                    type="email"
-                    placeholder="Recipients"
-                    className="w-full border-b border-gray-300 p-2 focus:outline-none"
-                    onFocus={handleFocus}
-                    onBlur={handleBlur}
-                  />
-                </div>
-                <div className="flex items-center">
-                  <input
-                    type="email"
-                    placeholder="Subject"
-                    className="w-full border-b border-gray-300 p-2 focus:outline-none"
-                  />
-                </div>
-                <textarea
-                  placeholder=""
-                  className="w-full p-2 h-[20rem] resize-none focus:outline-none"
-                ></textarea>
+            {/* Dialog Content */}
+            <div className="space-y-1 px-4">
+              {/* Conditionally show "To:" */}
+              <div className="flex items-center">
+                {showLabel && (
+                  <label className="block text-gray-600 border-b border-gray-300 p-2">
+                    To:
+                  </label>
+                )}
+                <input
+                  type="email"
+                  placeholder="Recipients"
+                  className="w-full border-b border-gray-300 p-2 focus:outline-none"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                />
               </div>
+              <div className="flex items-center">
+                <input
+                  type="text"
+                  placeholder="Subject"
+                  className="w-full border-b border-gray-300 p-2 focus:outline-none"
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                />
+              </div>
+              <textarea
+                placeholder="Message"
+                className="w-full p-2 h-[20rem] resize-none focus:outline-none"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              ></textarea>
+            </div>
 
-              {/* Dialog Footer */}
-              <div className="absolute flex items-center space-x-1 bottom-0 left-0 p-4 w-full">
-                {/* <button
-                  className="bg-gray-200 px-4 py-2 rounded hover:bg-gray-300"
-                  onClick={handleClose}
-                >
-                  Close
-                </button> */}
-                <button
-                  onClick={()=> { handleSend(); setStep(6)}}
-                  className="bg-blue-500 text-white px-8 py-2 rounded-full hover:bg-blue-600"
-                >
-                  Send
-                </button>{" "}
-                <button className="p-2 text-gray-600 rounded-md hover:bg-gray-200">
-                  <span>
-                    <img src={font} alt="font" className="w-4 opacity-80" />
-                  </span>
-                </button>
-                <button className="p-2 text-gray-600 rounded-md hover:bg-gray-200">
-                  <span className="font-bold">
-                    <img src={attach} alt="attach" className="w-4 opacity-80" />
-                  </span>
-                </button>
-                <button className="p-2 text-gray-600 rounded-md hover:bg-gray-200">
-                  <span>
-                    <img src={link} alt="link" className="w-4 opacity-80" />
-                  </span>
-                </button>
-                <button className="p-2 text-gray-600 rounded-md hover:bg-gray-200">
-                  <span>
-                    <img src={drive} alt="drive" className="w-4 opacity-80" />
-                  </span>
-                </button>
-                <button className="p-2 text-gray-600 rounded-md hover:bg-gray-200">
-                  <span>
-                    <img src={image} alt="image" className="w-4 opacity-80" />
-                  </span>
-                </button>
-              </div>
+            {/* Dialog Footer */}
+            <div className="absolute flex items-center space-x-1 bottom-0 left-0 p-4 w-full">
+              <button
+                onClick={() => { 
+                  console.log(email, subject, message);
+                  handleSend(email, subject, message); setStep(6); }}
+                className="bg-blue-500 text-white px-8 py-2 rounded-full hover:bg-blue-600"
+              >
+                Send
+              </button>
+              {/* Other buttons omitted for brevity */}
             </div>
           </div>
-        )}
+        </div>
+      )}
 
         {/* Toast Notification */}
         {toastVisible && (

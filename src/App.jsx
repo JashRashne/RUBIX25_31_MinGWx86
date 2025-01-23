@@ -16,6 +16,7 @@ import GmailChrome from "./components/Gmail/GmailChrome";
 import GmailDesktop from "./components/Gmail/GmailDesktop";
 import URLEducation from './components/URLEducation'
 import Landing from "./components/Landing";
+import CommunityForum from './components/CommunityForum'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -34,6 +35,7 @@ function App() {
           <Route path="/gmail-desktop" element={<GmailDesktop />} />
           <Route path="/gmail-chrome" element={<GmailChrome />} />
           <Route path="/url-education" element={<URLEducation />} />
+          <Route path="/community" element={<CommunityForum />} />
         </Routes>
       </Router>
       {/* Change */}
