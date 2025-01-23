@@ -18,6 +18,11 @@ import URLEducation from './components/URLEducation'
 import Landing from "./components/Landing";
 import CommunityForum from './components/CommunityForum'
 import MeetLeft from './components/GMeet/MeetLeft'
+import BankForm from "./components/Bank/BankForm";
+import BankLogin from "./components/Bank/BankLogin";
+import BankHome from "./components/Bank/BankHome";
+import BankChrome from "./components/Bank/BankChrome";
+import BankDesktop from "./components/Bank/BankDesktop";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -38,6 +43,11 @@ function App() {
           <Route path="/gmail-chrome" element={<GmailChrome />} />
           <Route path="/url-education" element={<URLEducation />} />
           <Route path="/community" element={<CommunityForum />} />
+          <Route path="/bank" element={<BankForm />} />
+          <Route path="/bank-login" element={<BankLogin />} />
+          <Route path="/bank-home" element={<BankHome />} />
+          <Route path="/bank-chrome" element={<BankChrome />} />
+          <Route path="/bank-desktop" element={<BankDesktop />} />
         </Routes>
       </Router>
       {/* Change */}
