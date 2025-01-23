@@ -17,6 +17,7 @@ import GmailDesktop from "./components/Gmail/GmailDesktop";
 import URLEducation from './components/URLEducation'
 import Landing from "./components/Landing";
 import CommunityForum from './components/CommunityForum'
+import MeetLeft from './components/GMeet/MeetLeft'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -30,6 +31,7 @@ function App() {
           <Route path="/meet-chrome" element={<MeetChrome />} />
           <Route path="/meet-home" element={<MeetHome />} />
           <Route path="/meet-screen" element={<MeetScreen />} />
+          <Route path="/meet-left" element={<MeetLeft />} />
           <Route path="/url-scan" element={<URLScanner />} />
           <Route path="/gmail-screen" element={<GmailScreen />} />
           <Route path="/gmail-desktop" element={<GmailDesktop />} />

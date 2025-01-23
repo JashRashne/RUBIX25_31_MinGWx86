@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import Webcam from "react-webcam";
 import Navbar from "../Navbar";
 import arrow from "../../assets/arrow1.png";
+import { useNavigate } from "react-router-dom";
 
 const MeetScreen = () => {
+
+
+  const navigate = useNavigate();
+
   // State for each button
   const [isButton1Active, setIsButton1Active] = useState(false);
   const [isButton2Active, setIsButton2Active] = useState(false); // Controls B2 (Webcam Toggle)
@@ -350,7 +355,7 @@ const MeetScreen = () => {
               </span>
             </div>
             <div
-              onClick={() => setIsButton5Active(!isButton5Active)}
+              onClick={() => {setIsButton5Active(!isButton5Active); navigate('/meet-left')}}
               className={`flex items-center justify-center h-16 w-20 rounded-2xl cursor-pointer bg-red-500`}
             >
               <span className="text-white text-lg font-bold">
