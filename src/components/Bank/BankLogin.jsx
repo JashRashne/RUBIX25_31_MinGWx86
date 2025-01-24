@@ -52,7 +52,7 @@ const BankLogin = () => {
     }
 
     toast.success("Login successful!");
-    navigate('/bank-home');
+    navigate("/bank-home");
     console.log("Login Data:", formData);
     // Proceed with the login logic (e.g., redirect to dashboard)
   };
@@ -65,7 +65,7 @@ const BankLogin = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white shadow-lg rounded-lg p-8 w-96 max-w-full">
+      <div className="bg-white shadow-lg rounded-lg p-8 w-[30rem] max-w-full">
         <h2 className="text-2xl font-semibold text-center text-blue-600 mb-6">
           Bank Portal Login
         </h2>

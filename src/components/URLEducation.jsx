@@ -45,10 +45,10 @@ const ActivitySurvey = () => {
   }
 
   return (
-    <div className="h-screen bg-gradient-to-r from-teal-200 to-teal-400 flex flex-col">
+    <div className="h-screen bg-gradient-to-r from-blue-50 to-blue-200 flex flex-col">
       {/* Navbar */}
-      <nav className="bg-teal-600 p-4 shadow-md">
-        <h1 className="text-white text-lg font-bold">
+      <nav className="bg-white p-4 shadow-md">
+        <h1 className=" text-lg font-bold">
           Online Safety Awareness
         </h1>
       </nav>
@@ -57,15 +57,15 @@ const ActivitySurvey = () => {
       <div className="flex-grow flex items-center justify-center">
         {isVideoShown ? (
           // Video Screen
-          <div className="w-full max-w-lg bg-white p-6 rounded-lg shadow-lg">
-            <h1 className="text-xl font-bold text-teal-800 text-center mb-6">
+          <div className="w-full max-w-3xl bg-white p-6 rounded-lg shadow-lg">
+            <h1 className="text-4xl font-extrabold text-blue-800 text-center mb-6">
               Watch This Educational Video
             </h1>
-            <p className="text-teal-700 text-center mb-4">
+            {/* <p className="text-blue-700 text-center mb-4">
               Oops! You've clicked a potentially malicious URL. To help you
               avoid such links in the future, here’s a video to educate you,
               followed by a quiz for practice.
-            </p>
+            </p> */}
             <video
               className="w-full rounded-lg shadow-md mb-6"
               controls
@@ -75,7 +75,7 @@ const ActivitySurvey = () => {
             </video>
             <button
               onClick={handleVideoNext}
-              className="w-full bg-teal-500 text-white font-medium py-2 rounded-md hover:bg-teal-600 transition-all"
+              className="w-full bg-blue-500 text-white font-medium py-2 rounded-md hover:bg-blue-600 transition-all"
             >
               Next
             </button>
@@ -83,10 +83,10 @@ const ActivitySurvey = () => {
         ) : (
           // Quiz Screen
           <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
-            <h1 className="text-xl font-bold text-teal-800 text-center mb-6">
+            <h1 className="text-xl font-bold text-blue-800 text-center mb-6">
               Online Safety Quiz
             </h1>
-            <p className="text-teal-700 text-center mb-6">
+            <p className="text-blue-700 text-center mb-6">
               Which of the following looks like a malicious link?
             </p>
             <div className="space-y-4">
@@ -94,14 +94,14 @@ const ActivitySurvey = () => {
                 <div
                   key={index}
                   onClick={() => handleOptionClick(option)}
-                  className={`cursor-pointer border rounded-lg p-4 text-teal-800 font-medium shadow-sm transition-all ${
+                  className={`cursor-pointer border rounded-lg p-4 text-blue-800 font-medium shadow-sm transition-all ${
                     selectedOption
                       ? option.correct
                         ? "bg-green-100 border-green-500"
                         : selectedOption === option
                         ? "bg-red-100 border-red-500"
-                        : "bg-teal-50 border-teal-200"
-                      : "bg-teal-50 hover:bg-teal-100 border-teal-200"
+                        : "bg-blue-50 border-blue-200"
+                      : "bg-blue-50 hover:bg-blue-100 border-blue-200"
                   }`}
                 >
                   {option.text}
@@ -124,7 +124,7 @@ const ActivitySurvey = () => {
                 className={`ml-auto px-4 py-2 rounded-md font-medium ${
                   !selectedOption
                     ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    : "bg-teal-500 text-white hover:bg-teal-600"
+                    : "bg-blue-500 text-white hover:bg-blue-600"
                 }`}
               >
                 Next

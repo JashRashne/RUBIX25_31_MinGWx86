@@ -14,10 +14,10 @@ import GmailScreen from "./components/Gmail/GmailScreen";
 import EmailInterface from "./components/EmailInterface";
 import GmailChrome from "./components/Gmail/GmailChrome";
 import GmailDesktop from "./components/Gmail/GmailDesktop";
-import URLEducation from './components/URLEducation'
+import URLEducation from "./components/URLEducation";
 import Landing from "./components/Landing";
-import CommunityForum from './components/CommunityForum'
-import MeetLeft from './components/GMeet/MeetLeft'
+import CommunityForum from "./components/CommunityForum";
+import MeetLeft from "./components/GMeet/MeetLeft";
 import BankForm from "./components/Bank/BankForm";
 import BankLogin from "./components/Bank/BankLogin";
 import BankHome from "./components/Bank/BankHome";
@@ -43,7 +43,7 @@ function App() {
           <Route path="/gmail-chrome" element={<GmailChrome />} />
           <Route path="/url-education" element={<URLEducation />} />
           <Route path="/community" element={<CommunityForum />} />
-          <Route path="/bank" element={<BankForm />} />
+          <Route path="/neft" element={<BankForm />} />
           <Route path="/bank-login" element={<BankLogin />} />
           <Route path="/bank-home" element={<BankHome />} />
           <Route path="/bank-chrome" element={<BankChrome />} />

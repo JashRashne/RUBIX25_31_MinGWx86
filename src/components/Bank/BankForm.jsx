@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -51,28 +52,42 @@ const BankForm = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex">
       {/* Sidebar */}
-      <div className="w-64 bg-blue-800 text-white p-6">
-        <h1 className="text-xl font-semibold mb-8">Banking Services</h1>
-        <ul>
-          <li className="text-lg hover:bg-blue-700 p-2 rounded-lg cursor-pointer mb-4">
-            <a href="#">NEFT Transaction</a>
-          </li>
-          <li className="text-lg hover:bg-blue-700 p-2 rounded-lg cursor-pointer mb-4">
-            <a href="#">RTGS Transaction</a>
-          </li>
-          <li className="text-lg hover:bg-blue-700 p-2 rounded-lg cursor-pointer mb-4">
-            <a href="#">IMPS Transfer</a>
-          </li>
-          <li className="text-lg hover:bg-blue-700 p-2 rounded-lg cursor-pointer mb-4">
-            <a href="#">Cheque Book Request</a>
-          </li>
-          <li className="text-lg hover:bg-blue-700 p-2 rounded-lg cursor-pointer mb-4">
-            <a href="#">Account Balance</a>
-          </li>
-          <li className="text-lg hover:bg-blue-700 p-2 rounded-lg cursor-pointer mb-4">
-            <a href="#">Transaction History</a>
-          </li>
-        </ul>
+   <div className="w-64 bg-blue-800 text-white min-h-screen p-6">
+        <h2 className="text-3xl font-semibold text-center text-white mb-10">Banking Portal</h2>
+        <div className="space-y-6">
+          <Link to="/neft" className="flex items-center space-x-4 hover:text-blue-300">
+            <i className="ri-money-dollar-circle-fill text-2xl"></i>
+            <span className="text-lg">NEFT Transaction</span>
+          </Link>
+          <Link to="/rtgs" className="flex items-center space-x-4 hover:text-blue-300">
+            <i className="ri-flashlight-fill text-2xl"></i>
+            <span className="text-lg">RTGS Transaction</span>
+          </Link>
+          <Link to="/imps" className="flex items-center space-x-4 hover:text-blue-300">
+            <i className="ri-phone-fill text-2xl"></i>
+            <span className="text-lg">IMPS Transfer</span>
+          </Link>
+          <Link to="/balance" className="flex items-center space-x-4 hover:text-blue-300">
+          <i class="ri-bank-card-fill text-2xl"></i>
+            <span className="text-lg">Account Balance</span>
+          </Link>
+          <Link to="/history" className="flex items-center space-x-4 hover:text-blue-300">
+            <i className="ri-history-fill text-2xl"></i>
+            <span className="text-lg">Transaction History</span>
+          </Link>
+          <Link to="/cheque-book" className="flex items-center space-x-4 hover:text-blue-300">
+            <i className="ri-book-2-fill text-2xl"></i>
+            <span className="text-lg">Cheque Book Request</span>
+          </Link>
+          <Link to="/fund-transfer" className="flex items-center space-x-4 hover:text-blue-300">
+            <i className="ri-exchange-fill text-2xl"></i>
+            <span className="text-lg">Fund Transfer</span>
+          </Link>
+          <Link to="/loan" className="flex items-center space-x-4 hover:text-blue-300">
+            <i className="ri-home-2-fill text-2xl"></i>
+            <span className="text-lg">Loan Application</span>
+          </Link>
+        </div>
       </div>
 
       {/* Main Content Area */}
