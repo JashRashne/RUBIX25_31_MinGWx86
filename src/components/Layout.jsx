@@ -11,22 +11,31 @@ const Layout = ({ children }) => {
 
   return (
     <div className="h-screen max-w-[100%] flex flex-col">
-      <div className="h-[14.5%] p-4 w-full flex items-center justify-center">
-        <div className="h-full w-[90%] rounded-[1.7rem] bg-white shadow-lg flex">
-          <div className="h-full w-[20%] rounded-l-[1.7rem] flex items-center justify-center">
-            <img src={logo} width={140} height={140} alt="Logo" />
-          </div>
-          <div className="h-full w-[70%] flex items-center justify-around">
-            <div onClick={() => handleNavigation('/')} className="cursor-pointer">Home</div>
-            <div onClick={() => handleNavigation('/dashboard')} className="cursor-pointer">Dashboard</div>
-            <div onClick={() => handleNavigation('/view360')} className="cursor-pointer">Religious Tour</div>
-            <div onClick={() => handleNavigation('/community')} className="cursor-pointer">Community</div>
-          </div>
-          <div className="h-full w-[10%] rounded-r-[1.7rem] flex items-center justify-center">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnlkoa53zZB468uxslQjXZtrnqUZpa04vaVg&s" className="rounded-full h-[3rem]" alt="" />
-          </div>
-        </div>
-      </div>
+      <nav className="relative z-10 flex justify-between items-center p-4 px-8 bg-white shadow-md">
+          <div className="text-gray-800 text-2xl font-bold">Technik</div>
+          <ul className="flex space-x-6 text-gray-800">
+            <li>
+              <a href="/community" className="hover:underline">
+                Community
+              </a>
+            </li>
+            <li>
+              <a href="#about" className="hover:underline">
+                About Us
+              </a>
+            </li>
+            <li>
+              <a href="#contact" className="hover:underline">
+                Contact
+              </a>
+            </li>
+            <li>
+              <a href="#faq" className="hover:underline">
+                FAQ
+              </a>
+            </li>
+          </ul>
+        </nav>
       <div className="h-[100%] w-full">{children}</div>
     </div>
   );
