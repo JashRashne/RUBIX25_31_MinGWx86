@@ -20,9 +20,12 @@ const URLScanner = () => {
     setError(null);
 
     try {
-      const response = await axios.get(
-        `https://99c3-103-160-70-195.ngrok-free.app/check-url?url=www.google.com`
-      );
+      console.log(url);
+      const response = await axios.get(`https://python-server-1.vercel.app/check-url`, {
+        params: {
+          url: url
+        },
+      });
       const data = response.data;
 
       console.log(response);
@@ -90,10 +93,10 @@ const URLScanner = () => {
           {result && (
             <div className="mt-6 bg-green-50 border border-green-400 text-green-700 p-4 rounded-md">
               <h3 className="font-bold text-lg mb-2">Results</h3>
-              <p><strong>Is Safe:</strong> {result.malware ? 'Yes' : 'No'}</p>
-              <p><strong>Category:</strong> {result.category}</p>
-              {/* <p><strong>Malicious Score:</strong> {result.malicious_score}</p> */}
-              {/* <p><strong>URL Type:</strong> {result.url_type}</p> */}
+              <p><strong>Is Safe? :</strong> {result.malware ? 'No' : 'Yes'}</p>
+              <p><strong>IP Address:</strong> {result.ip_address}</p>
+              <p><strong>Content Type :</strong> {result.content_type}</p>
+              <p><strong>Is Adult? :</strong> {result.adult ? 'Yes' : 'No'}</p>
             </div>
           )}
 

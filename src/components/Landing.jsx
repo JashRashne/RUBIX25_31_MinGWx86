@@ -4,6 +4,7 @@ import gmailLogo from "../assets/gmailLogo.png";
 import meet from "../assets/meet.png";
 import printer from "../assets/printer.png";
 import url from "../assets/url.png";
+import bank from '../assets/bank.png'
 import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
@@ -81,7 +82,7 @@ const Landing = () => {
           {[
             { name: "Gmail", imgSrc: gmailLogo, difficulty: "Easy", navigationPlace: '/gmail-desktop' },
             { name: "Google Meet", imgSrc: meet, difficulty: "Medium", navigationPlace: '/meet-desktop' },
-            { name: "Printer", imgSrc: printer, difficulty: "Easy", navigationPlace: '/' },
+            { name: "Banking", imgSrc: bank, difficulty: "Easy", navigationPlace: '/bank-desktop' },
             { name: "URL Safety", imgSrc: url, difficulty: "Service", navigationPlace: '/url-scan' },
           ].map(({ name, imgSrc, difficulty, navigationPlace }) => (
             <div className="text-center relative group" key={name}>

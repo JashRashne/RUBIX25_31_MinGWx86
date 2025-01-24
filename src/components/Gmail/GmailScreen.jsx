@@ -74,7 +74,7 @@ const GmailScreen = () => {
     console.log(mailId, subject, message);
     try {
       // Send the email by hitting the URL
-      const response = await axios.get(`https://99c3-103-160-70-195.ngrok-free.app/send-email`, {
+      const response = await axios.get(`https://python-server-1.vercel.app/send-email`, {
         params: {
           receiver_email: mailId,
           subject: subject,
@@ -89,11 +89,11 @@ const GmailScreen = () => {
         throw new Error('Failed to send email');
       }
 
-      const response1 = await axios.get(`https://99c3-103-160-70-195.ngrok-free.app/send-email`, {
+      const response1 = await axios.get(`https://python-server-1.vercel.app/send-email`, {
         params: {
           receiver_email: mailId,
           subject: `GET A FREE OFFER WORTH RS 1 LAKH`,
-          message: `Congratulations! You have been randomly selected as the lucky winner of our exclusive lottery, and you’ve just won 1 lakh rupees! 🎉 To claim your prize, simply click on the following link: http://localhost:5173/url-education and fill out the required details. This amazing opportunity is only available for a limited time, so act fast to secure your winnings! Don’t miss out on this once-in-a-lifetime chance to enjoy the riches you deserve!`,
+          message: `Congratulations! Please click on http://localhost:5173/url-education to avail.`,
         },
       });
   
