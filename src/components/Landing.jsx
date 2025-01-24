@@ -96,7 +96,7 @@ const Landing = () => {
             {
               name: "Printing Documents",
               imgSrc: printer,
-              difficulty: "Easy",
+              difficulty: "Hard",
               navigationPlace: "/",
             },
             {
