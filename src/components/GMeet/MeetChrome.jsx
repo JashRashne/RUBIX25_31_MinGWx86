@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Navbar from "../Navbar";
 import { useNavigate } from "react-router-dom";
 import arrow from "../../assets/arrow1.png";
@@ -6,10 +6,22 @@ import refresh from "../../assets/refresh.png";
 import starred from "../../assets/star.png";
 import backFull from "../../assets/backFull.png";
 import download from "../../assets/downloads.png";
+import addressbaraudio from '../../assets/audio/CHROME_ADDRESSBAR.m4a'
+
 
 const MeetChrome = () => {
   const navigate = useNavigate();
   const [searchValue, setSearchValue] = useState(""); // State for the input value
+
+
+
+    const addressbarRef = useRef(null);
+    const handleAddressbarClick = () => {
+      if (addressbarRef.current) {
+        addressbarRef.current.play();
+      }
+    }
+
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
@@ -95,7 +107,8 @@ const MeetChrome = () => {
           </span>
         </div>
         <div className="w-full h-[40%]  flex items-center justify-center">
-          <div className="w-[80%] h-[80%] bg-gray-200 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+          <div className="w-[80%] h-[80%] bg-gray-200 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+          onClick={() => handleAddressbarClick()}>
             <i class="ri-volume-up-line text-xl"></i>
             <span className="px-3 text-xm font-bold">LISTEN INSTRUCTION </span>
           </div>
@@ -133,6 +146,8 @@ const MeetChrome = () => {
           </div>
         </div>
       </div>
+            <audio src={addressbaraudio} className="hidden" ref={addressbarRef} ></audio>
+      
     </div>
   );
 };

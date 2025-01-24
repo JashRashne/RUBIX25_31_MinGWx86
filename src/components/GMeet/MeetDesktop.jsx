@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import windowslogo from "../../assets/windows.png";
 import chromelogo from "../../assets/chrome.png";
 import wordlogo from "../../assets/msword.png";
@@ -8,13 +8,21 @@ import recyclebin from '../../assets/recyclebin.png'
 import arrow from '../../assets/arrow2.png'
 import { useNavigate } from 'react-router-dom';
 import TransitionEffect from "../TransitionEffect";
+import chromeaudio from '../../assets/audio/CHROME_ICON.m4a'
 
 
 const MeetDesktop = () => {
 
 
   const navigate = useNavigate();
-
+  
+  const chromeRef = useRef(null);
+  const handleChromeClick = () => {
+    // Play the audio when the button is clicked
+    if (chromeRef.current) {
+      chromeRef.current.play();
+    }
+  };
 
   return (
     <div class="bg-[url('https://d7hftxdivxxvm.cloudfront.net/?quality=80&resize_to=width&src=https%3A%2F%2Fartsy-media-uploads.s3.amazonaws.com%2F2RNK1P0BYVrSCZEy_Sd1Ew%252F3417757448_4a6bdf36ce_o.jpg&width=1820')] bg-cover bg-center h-screen w-screen flex flex-col relative">
@@ -35,7 +43,8 @@ const MeetDesktop = () => {
           </div>
           <div className="w-full h-[40%]  flex items-center justify-center">
 
-            <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+            <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+            onClick={() => handleChromeClick()}>
               <i class="ri-volume-up-line text-xl"></i>
               <span className="px-3 text-xm font-bold">LISTEN INSTRUCTION </span>
             </div>
@@ -104,6 +113,8 @@ const MeetDesktop = () => {
         </div>
         <div></div>
       </div>
+          <audio src={chromeaudio} className="hidden" ref={chromeRef} ></audio>
+      
     </div>
   );
 };

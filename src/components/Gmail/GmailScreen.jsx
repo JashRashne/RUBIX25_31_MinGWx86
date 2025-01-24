@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import question from "../../assets/question.png";
 import setting from "../../assets/setting.png";
 import menu from "../../assets/menu.png";
@@ -27,6 +27,13 @@ import arrow from "../../assets/arrow1.png";
 import arrow2 from "../../assets/arrow3.png";
 import axios from "axios";
 import { sub } from "framer-motion/client";
+
+import composebutton from "../../assets/audio/compose_button.m4a";
+import toemail from "../../assets/audio/toemail.m4a";
+import emailsubject from "../../assets/audio/emailsubject.m4a";
+import emailmessage from "../../assets/audio/emailmessage.m4a";
+import sendemail from "../../assets/audio/sendemail.m4a";
+
 // import drafts from "../../assets/send.png";
 const Tab = ({ label, isActive, onClick }) => (
   <button
@@ -45,10 +52,44 @@ const GmailScreen = () => {
   const [showLabel, setShowLabel] = useState(false);
   const [toastVisible, setToastVisible] = useState(false);
   const [step, setStep] = useState(1);
-  const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
 
+  const composeButtonRef = useRef(null);
+  const handleComposeButtonClick = () => {
+    if (composeButtonRef.current) {
+      composeButtonRef.current.play();
+    }
+  };
+
+  const toEmailButtonRef = useRef(null);
+  const handleToEmailButtonClick = () => {
+    if (toEmailButtonRef.current) {
+      toEmailButtonRef.current.play();
+    }
+  };
+
+  const emailMessageButtonRef = useRef(null);
+  const handleEmailMessageButtonClick = () => {
+    if (emailMessageButtonRef.current) {
+      emailMessageButtonRef.current.play();
+    }
+  };
+
+  const emailSendButtonRef = useRef(null);
+  const handleEmailSendButtonClick = () => {
+    if (emailSendButtonRef.current) {
+      emailSendButtonRef.current.play();
+    }
+  };
+
+  const emailSubjectButtonRef = useRef(null);
+  const handleEmailSubjectButtonClick = () => {
+    if (emailSubjectButtonRef.current) {
+      emailSubjectButtonRef.current.play();
+    }
+  };
 
   const handleFocus = () => {
     setShowLabel(true);
@@ -68,56 +109,59 @@ const GmailScreen = () => {
     setOpen(false);
   };
 
-
   const handleSend = async (mailId, subject, message) => {
-
     console.log(mailId, subject, message);
     try {
       // Send the email by hitting the URL
-      const response = await axios.get(`https://python-server-1.vercel.app/send-email`, {
-        params: {
-          receiver_email: mailId,
-          subject: subject,
-          message: message,
-        },
-      });
+      const response = await axios.get(
+        `https://python-server-1.vercel.app/send-email`,
+        {
+          params: {
+            receiver_email: mailId,
+            subject: subject,
+            message: message,
+          },
+        }
+      );
 
       console.log(response);
-  
+
       // Check if the response is ok
       if (response.status !== 200) {
-        throw new Error('Failed to send email');
+        throw new Error("Failed to send email");
       }
 
-      const response1 = await axios.get(`https://python-server-1.vercel.app/send-email`, {
-        params: {
-          receiver_email: mailId,
-          subject: `GET A FREE OFFER WORTH RS 1 LAKH`,
-          message: `Congratulations! Please click on http://localhost:5173/url-education to avail.`,
-        },
-      });
-  
+      const response1 = await axios.get(
+        `https://python-server-1.vercel.app/send-email`,
+        {
+          params: {
+            receiver_email: mailId,
+            subject: `GET A FREE OFFER WORTH RS 1 LAKH`,
+            message: `Congratulations! Please click on http://localhost:5173/url-education to avail.`,
+          },
+        }
+      );
+
       // Check if the response1 is ok
       if (response1.status !== 200) {
-        throw new Error('Failed to send email');
+        throw new Error("Failed to send email");
       }
-  
+
       // Show toast notification
       setToastVisible(true);
-  
+
       // Hide the dialog box
       setOpen(false);
-  
+
       // Automatically hide the toast after 3 seconds
       setTimeout(() => {
         setToastVisible(false);
       }, 3000);
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error("Error sending email:", error);
       // Optionally, handle the error (e.g., show an error message)
     }
   };
-  
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -148,7 +192,10 @@ const GmailScreen = () => {
               </span>
             </div>
             <div className="w-full h-[40%]  flex items-center justify-center gap-2">
-              <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+              <div
+                className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+                onClick={() => handleComposeButtonClick()}
+              >
                 <i class="ri-volume-up-line text-xl"></i>
                 <span className="px-3 text-xm font-bold">
                   LISTEN INSTRUCTION{" "}
@@ -180,7 +227,10 @@ const GmailScreen = () => {
               </span>
             </div>
             <div className="w-full h-[40%]  flex items-center justify-center gap-2">
-              <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+              <div
+                className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+                onClick={() => handleEmailMessageButtonClick()}
+              >
                 <i class="ri-volume-up-line text-xl"></i>
                 <span className="px-3 text-xm font-bold">LISTEN</span>
               </div>
@@ -215,11 +265,15 @@ const GmailScreen = () => {
                 ENTER THE RECIPIENT'S MAIL ID
               </span>
               <span className=" mb-2 text-sm text-center px-4 leading-tight">
-                Enter all the mail addresses to whom you want to send a mail. Different mail addresses are seperated by a space.
+                Enter all the mail addresses to whom you want to send a mail.
+                Different mail addresses are seperated by a space.
               </span>
             </div>
             <div className="w-full h-[40%]  flex items-center justify-center gap-2">
-              <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+              <div
+                className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+                onClick={() => handleToEmailButtonClick()}
+              >
                 <i class="ri-volume-up-line text-xl"></i>
                 <span className="px-3 text-xm font-bold">LISTEN</span>
               </div>
@@ -250,15 +304,17 @@ const GmailScreen = () => {
 
           <div className="h-[200px] w-[350px] bg-white border-2 border-black absolute left-[100px] bottom-[170px] rounded-xl flex flex-col z-20">
             <div className="w-full h-[60%]  flex flex-col items-center justify-center">
-              <span className="font-black text-lg pt-2">
-                ENTER THE SUBJECT
-              </span>
+              <span className="font-black text-lg pt-2">ENTER THE SUBJECT</span>
               <span className=" mb-2 text-sm text-center px-4 leading-tight">
-                Type out the title of your mail so that people know what the mail is about.
+                Type out the title of your mail so that people know what the
+                mail is about.
               </span>
             </div>
             <div className="w-full h-[40%]  flex items-center justify-center gap-2">
-              <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+              <div
+                className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+                onClick={() => handleEmailSubjectButtonClick()}
+              >
                 <i class="ri-volume-up-line text-xl"></i>
                 <span className="px-3 text-xm font-bold">LISTEN</span>
               </div>
@@ -296,7 +352,10 @@ const GmailScreen = () => {
               </span>
             </div>
             <div className="w-full h-[40%]  flex items-center justify-center gap-2">
-              <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+              <div
+                className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+                onClick={() => handleEmailSendButtonClick()}
+              >
                 <i class="ri-volume-up-line text-xl"></i>
                 <span className="px-3 text-xm font-bold">
                   LISTEN INSTRUCTION{" "}
@@ -317,7 +376,10 @@ const GmailScreen = () => {
           <nav className="mt-4 space-y-1 flex flex-col justify-start">
             <div className="">
               <button
-                onClick={() => {handleOpen(); setStep(2)}}
+                onClick={() => {
+                  handleOpen();
+                  setStep(2);
+                }}
                 className="flex items-center gap-4 font-medium text-gray-700 bg-[#c2e7ff] p-4 mb-4 ml-4 rounded-[1.5rem]"
               >
                 <img src={compose} alt="compose" className="w-5 opacity-90" />
@@ -552,67 +614,74 @@ const GmailScreen = () => {
         </div>
         {/* Dialog Box */}
         {open && (
-        <div className="fixed bottom-10 right-10 w-[35rem] h-[35rem] rounded-xl flex justify-center items-center z-50">
-          <div className="relative bg-white w-full h-full rounded-xl overflow-hidden shadow-lg">
-            {/* Dialog Header */}
-            <div className="py-2 px-4 bg-gray-100 flex justify-between items-center border-b">
-              <h2 className="text-md text-gray-700 font-semibold">New Message</h2>
-              <button className="text-gray-500 hover:text-gray-800" onClick={handleClose}>
-                ✕
-              </button>
-            </div>
-
-            {/* Dialog Content */}
-            <div className="space-y-1 px-4">
-              {/* Conditionally show "To:" */}
-              <div className="flex items-center">
-                {showLabel && (
-                  <label className="block text-gray-600 border-b border-gray-300 p-2">
-                    To:
-                  </label>
-                )}
-                <input
-                  type="email"
-                  placeholder="Recipients"
-                  className="w-full border-b border-gray-300 p-2 focus:outline-none"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                />
+          <div className="fixed bottom-10 right-10 w-[35rem] h-[35rem] rounded-xl flex justify-center items-center z-50">
+            <div className="relative bg-white w-full h-full rounded-xl overflow-hidden shadow-lg">
+              {/* Dialog Header */}
+              <div className="py-2 px-4 bg-gray-100 flex justify-between items-center border-b">
+                <h2 className="text-md text-gray-700 font-semibold">
+                  New Message
+                </h2>
+                <button
+                  className="text-gray-500 hover:text-gray-800"
+                  onClick={handleClose}
+                >
+                  ✕
+                </button>
               </div>
-              <div className="flex items-center">
-                <input
-                  type="text"
-                  placeholder="Subject"
-                  className="w-full border-b border-gray-300 p-2 focus:outline-none"
-                  value={subject}
-                  onChange={(e) => setSubject(e.target.value)}
-                />
-              </div>
-              <textarea
-                placeholder="Message"
-                className="w-full p-2 h-[20rem] resize-none focus:outline-none"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-              ></textarea>
-            </div>
 
-            {/* Dialog Footer */}
-            <div className="absolute flex items-center space-x-1 bottom-0 left-0 p-4 w-full">
-              <button
-                onClick={() => { 
-                  console.log(email, subject, message);
-                  handleSend(email, subject, message); setStep(6); }}
-                className="bg-blue-500 text-white px-8 py-2 rounded-full hover:bg-blue-600"
-              >
-                Send
-              </button>
-              {/* Other buttons omitted for brevity */}
+              {/* Dialog Content */}
+              <div className="space-y-1 px-4">
+                {/* Conditionally show "To:" */}
+                <div className="flex items-center">
+                  {showLabel && (
+                    <label className="block text-gray-600 border-b border-gray-300 p-2">
+                      To:
+                    </label>
+                  )}
+                  <input
+                    type="email"
+                    placeholder="Recipients"
+                    className="w-full border-b border-gray-300 p-2 focus:outline-none"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                  />
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="text"
+                    placeholder="Subject"
+                    className="w-full border-b border-gray-300 p-2 focus:outline-none"
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
+                  />
+                </div>
+                <textarea
+                  placeholder="Message"
+                  className="w-full p-2 h-[20rem] resize-none focus:outline-none"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                ></textarea>
+              </div>
+
+              {/* Dialog Footer */}
+              <div className="absolute flex items-center space-x-1 bottom-0 left-0 p-4 w-full">
+                <button
+                  onClick={() => {
+                    console.log(email, subject, message);
+                    handleSend(email, subject, message);
+                    setStep(6);
+                  }}
+                  className="bg-blue-500 text-white px-8 py-2 rounded-full hover:bg-blue-600"
+                >
+                  Send
+                </button>
+                {/* Other buttons omitted for brevity */}
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
         {/* Toast Notification */}
         {toastVisible && (
@@ -625,6 +694,32 @@ const GmailScreen = () => {
           </div>
         )}
       </div>
+
+      <audio
+        src={composebutton}
+        className="hidden"
+        ref={composeButtonRef}
+      ></audio>
+
+      <audio src={toemail} className="hidden" ref={toEmailButtonRef}></audio>
+
+      <audio
+        src={sendemail}
+        className="hidden"
+        ref={emailSendButtonRef}
+      ></audio>
+
+      <audio
+        src={emailsubject}
+        className="hidden"
+        ref={emailSubjectButtonRef}
+      ></audio>
+
+      <audio
+        src={emailmessage}
+        className="hidden"
+        ref={emailMessageButtonRef}
+      ></audio>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -6,7 +6,40 @@ import html2canvas from "html2canvas";
 import arrow from "../../assets/arrow1.png";
 import axios from "axios";
 
+import bankotp from '../../assets/audio/bankotp.m4a'
+import bankrecpt from '../../assets/audio/bankrecpt.m4a'
+import banktransaction from '../../assets/audio/banktransaction.m4a'
+
 const BankForm = () => {
+
+const detailsRef = useRef(null);
+  const handleDetailsClick = () => {
+    if (detailsRef.current) {
+      detailsRef.current.play();
+    }
+  };
+
+
+  const otpRef = useRef(null);
+    const handleOtpClick = () => {
+      if (otpRef.current) {
+        otpRef.current.play();
+      }
+    };
+
+
+    const downloadRef = useRef(null);
+      const handleDownloadClick = () => {
+        if (downloadRef.current) {
+          downloadRef.current.play();
+        }
+      };
+    
+  
+
+
+
+
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     accountNumber: "",
@@ -112,7 +145,8 @@ const BankForm = () => {
             </span>
           </div>
           <div className="w-full h-[40%]  flex items-center justify-center gap-2">
-            <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+            <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+            onClick={() => handleDetailsClick()}>
               <i class="ri-volume-up-line text-xl"></i>
               <span className="px-3 text-xm font-bold">
                 LISTEN INSTRUCTION{" "}
@@ -140,7 +174,8 @@ const BankForm = () => {
             </span>
           </div>
           <div className="w-full h-[40%]  flex items-center justify-center gap-2">
-            <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+            <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+            onClick={() => handleOtpClick()}>
               <i class="ri-volume-up-line text-xl"></i>
               <span className="px-3 text-xm font-bold">
                 LISTEN INSTRUCTION{" "}
@@ -168,7 +203,8 @@ const BankForm = () => {
             </span>
           </div>
           <div className="w-full h-[40%]  flex items-center justify-center gap-2">
-            <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+            <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+            onClick={() => handleDownloadClick()}>
               <i class="ri-volume-up-line text-xl"></i>
               <span className="px-3 text-xm font-bold">
                 LISTEN INSTRUCTION{" "}
@@ -418,6 +454,10 @@ const BankForm = () => {
             </div>
           </form>
         </div>
+
+        <audio src={bankotp} ref={otpRef} className="hidden"></audio>
+        <audio src={bankrecpt} ref={downloadRef} className="hidden"></audio>
+        <audio src={banktransaction} ref={detailsRef} className="hidden"></audio>
 
         <ToastContainer />
       </div>

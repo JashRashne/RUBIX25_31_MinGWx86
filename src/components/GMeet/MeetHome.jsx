@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
 import meet from "../../assets/meet.png";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import arrow from '../../assets/arrow1.png'
 
+import newmeeting from '../../assets/audio/newmeeting.m4a'
+
 const MeetHome = () => {
   const navigate = useNavigate();
+  const newMeetingRef = useRef(null);
+  const handleNewMeetingClick = () => {
+    if (newMeetingRef.current) {
+      newMeetingRef.current.play();
+    }
+  }
 
   return (
     <div className="bg-white h-screen flex flex-col relative">
@@ -30,7 +38,8 @@ const MeetHome = () => {
           </span>
         </div>
         <div className="w-full h-[40%]  flex items-center justify-center">
-          <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+          <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+          onClick={() => handleNewMeetingClick()}>
             <i class="ri-volume-up-line text-xl"></i>
             <span className="px-3 text-xm font-bold">LISTEN INSTRUCTION </span>
           </div>
@@ -129,6 +138,7 @@ const MeetHome = () => {
           </p>
         </div>
       </div>
+      <audio src={newmeeting} ref={newMeetingRef} className="hidden"></audio>
     </div>
   );
 };

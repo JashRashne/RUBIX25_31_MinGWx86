@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Webcam from "react-webcam";
 import Navbar from "../Navbar";
 import arrow from "../../assets/arrow1.png";
 import { useNavigate } from "react-router-dom";
+
+import copylinkmeet from '../../assets/audio/copylinkmeet.m4a'
+import admitbuttonmeet from '../../assets/audio/admitbuttonmeet.m4a'
+import micvidtogglemeet from '../../assets/audio/micvidtogglemeet.m4a'
+import endmeet from '../../assets/audio/endmeet.m4a'
 
 const MeetScreen = () => {
 
@@ -20,6 +25,36 @@ const MeetScreen = () => {
   const [isAdmitOpen, setIsAdmitOpen] = useState(true);
 
   const [step, setStep] = useState(1);
+
+
+
+  const copyLinkRef = useRef(null);
+  const handleCopyLinkClick = () => {
+    if (copyLinkRef.current) {
+      copyLinkRef.current.play();
+    }
+  }
+
+  const admitButtonRef = useRef(null);
+  const handleAdmitButtonClick = () => {
+    if (admitButtonRef.current) {
+      admitButtonRef.current.play();
+    }
+  }
+
+  const micToggleRef = useRef(null);
+  const handleMicToggleClick = () => {
+    if (micToggleRef.current) {
+      micToggleRef.current.play();
+    }
+  }
+
+  const endMeetRef = useRef(null);
+  const handleEndMeetClick = () => {
+    if (endMeetRef.current) {
+      endMeetRef.current.play();
+    }
+  }
 
   return (
     <div className="bg-white h-screen flex flex-col relative">
@@ -47,7 +82,8 @@ const MeetScreen = () => {
             </span>
           </div>
           <div className="w-full h-[40%]  flex items-center justify-center gap-2">
-            <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+            <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+            onClick={() => handleCopyLinkClick()}>
               <i class="ri-volume-up-line text-xl"></i>
               <span className="px-3 text-xm font-bold">LISTEN</span>
             </div>
@@ -86,7 +122,8 @@ const MeetScreen = () => {
             </span>
           </div>
           <div className="w-full h-[40%]  flex items-center justify-center gap-2">
-            <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+            <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+            onClick={() => handleAdmitButtonClick()}>
               <i class="ri-volume-up-line text-xl"></i>
               <span className="px-3 text-xm font-bold">
                 LISTEN INSTRUCTION{" "}
@@ -117,7 +154,8 @@ const MeetScreen = () => {
             </span>
           </div>
           <div className="w-full h-[40%]  flex items-center justify-center gap-2">
-            <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+            <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+            onClick={() => handleMicToggleClick()}>
               <i class="ri-volume-up-line text-xl"></i>
               <span className="px-3 text-xm font-bold">LISTEN</span>
             </div>
@@ -155,7 +193,8 @@ const MeetScreen = () => {
             </span>
           </div>
           <div className="w-full h-[40%]  flex items-center justify-center gap-2">
-            <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+            <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+            onClick={() => handleEndMeetClick()}>
               <i class="ri-volume-up-line text-xl"></i>
               <span className="px-3 text-xm font-bold">
                 LISTEN INSTRUCTION{" "}
@@ -393,6 +432,15 @@ const MeetScreen = () => {
           </div>
         </div>
       </div>
+
+
+
+
+        <audio src={copylinkmeet} ref={copyLinkRef} className="hidden"></audio>
+        <audio src={admitbuttonmeet} ref={admitButtonRef} className="hidden"></audio>
+        <audio src={micvidtogglemeet} ref={micToggleRef} className="hidden"></audio>
+        <audio src={endmeet} ref={endMeetRef} className="hidden"></audio>
+
     </div>
   );
 };

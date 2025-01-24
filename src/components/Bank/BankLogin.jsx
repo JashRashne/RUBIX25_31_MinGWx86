@@ -1,12 +1,37 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import arrow from "../../assets/arrow1.png";
 import Navbar from "../Navbar";
 
+import bankusername from "../../assets/audio/bankusername.m4a";
+import bankpassword from "../../assets/audio/bankpassword.m4a";
+import bankcaptcha from "../../assets/audio/bankcaptcha.m4a";
+
 const BankLogin = () => {
   const [step, setStep] = useState(1);
+
+  const usernameRef = useRef(null);
+  const handleUsernameClick = () => {
+    if (usernameRef.current) {
+      usernameRef.current.play();
+    }
+  };
+
+  const passwordRef = useRef(null);
+  const handlePasswordClick = () => {
+    if (passwordRef.current) {
+      passwordRef.current.play();
+    }
+  };
+
+  const captchaRef = useRef(null);
+  const handleCaptchaClick = () => {
+    if (captchaRef.current) {
+      captchaRef.current.play();
+    }
+  };
 
   const navigate = useNavigate();
   const generateCaptcha = () => {
@@ -88,7 +113,8 @@ const BankLogin = () => {
             </span>
           </div>
           <div className="w-full h-[40%]  flex items-center justify-center gap-2">
-            <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+            <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+            onClick={() => handleUsernameClick()}>
               <i class="ri-volume-up-line text-xl"></i>
               <span className="px-3 text-xm font-bold">LISTEN</span>
             </div>
@@ -125,7 +151,8 @@ const BankLogin = () => {
             </span>
           </div>
           <div className="w-full h-[40%]  flex items-center justify-center gap-2">
-            <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+            <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+            onClick={() => handlePasswordClick()}>
               <i class="ri-volume-up-line text-xl"></i>
               <span className="px-3 text-xm font-bold">LISTEN</span>
             </div>
@@ -158,11 +185,13 @@ const BankLogin = () => {
             <span className="font-black text-lg pt-2">ENTER CAPTCHA CODE</span>
             <span className=" mb-0 text-sm text-center px-4 leading-tight">
               CAPTCHA is a test to verify if a user is human or a bot, often by
-              solving puzzles. It helps prevent automated abuse on websites. After entering code , click <b>LOGIN</b>
+              solving puzzles. It helps prevent automated abuse on websites.
+              After entering code , click <b>LOGIN</b>
             </span>
           </div>
           <div className="w-full h-[40%]  flex items-center justify-center gap-2">
-            <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+            <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+            onClick={() => handleCaptchaClick()}>
               <i class="ri-volume-up-line text-xl"></i>
               <span className="px-3 text-xm font-bold">
                 LISTEN INSTRUCTION{" "}
@@ -275,6 +304,10 @@ const BankLogin = () => {
           </div>
         </form>
       </div>
+
+      <audio src={bankusername} className="hidden" ref={usernameRef} ></audio>
+      <audio src={bankpassword} className="hidden" ref={passwordRef} ></audio>
+      <audio src={bankcaptcha} className="hidden" ref={captchaRef} ></audio>
 
       {/* Toast Notification */}
       <ToastContainer />

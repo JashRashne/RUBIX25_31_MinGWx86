@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import arrow from "../../assets/arrow1.png";
+import bankneft from '../../assets/audio/bankneft.m4a'
 
 const BankHome = () => {
   const [step, setStep] = useState(1);
+  const bankNeftRef = useRef(null);
+    const handleNeftClick = () => {
+      if (bankNeftRef.current) {
+        bankNeftRef.current.play();
+      }
+    };
+  
 
   return (
     <div className="bg-gray-50 min-h-screen font-sans flex">
@@ -91,7 +99,8 @@ const BankHome = () => {
               </span>
             </div>
             <div className="w-full h-[40%]  flex items-center justify-center gap-2">
-              <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+              <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer"
+              onClick={() => handleNeftClick()}>
                 <i class="ri-volume-up-line text-xl"></i>
                 <span className="px-3 text-xm font-bold">
                   LISTEN INSTRUCTION{" "}
@@ -239,6 +248,13 @@ const BankHome = () => {
           </Link>
         </div>
       </div>
+
+
+      <audio
+              src={bankneft}
+              className="hidden"
+              ref={bankNeftRef}
+            ></audio>
     </div>
   );
 };
