@@ -4,15 +4,15 @@ import Layout from "./Layout";
 function CommunityForum() {
   const [forums, setForums] = useState([
     {
-      name: "Sustainable Living Discussions",
+      name: "How To Whatsapp  ",
       id: 1,
-      createdAt: "Dec 12, 2023 - 09:00 WIB",
+      createdAt: "Jan 19, 2025 - 09:00 WIB",
       createdBy: "Jai Shastri",
     },
     {
-      name: "Environmental Awareness Campaigns",
+      name: "Banking Help Forum",
       id: 2,
-      createdAt: "Dec 13, 2023 - 10:00 WIB",
+      createdAt: "Jan 13, 2025 - 10:00 WIB",
       createdBy: "Vivek Pandey",
     },
   ]);
@@ -24,7 +24,7 @@ function CommunityForum() {
       {
         id: 1,
         user: "Jash Rashne",
-        messages: ["How can we promote sustainable living in our community?"],
+        messages: ["How can I send message to my nephew?"],
         profileImage: "https://example.com/profile1.jpg",
       },
     ],
@@ -96,22 +96,22 @@ function CommunityForum() {
 
   return (
     <Layout>
-      <div className="flex h-[90vh] w-full bg-green-50 p-4">
+      <div className="flex h-[90vh] w-full bg-blue-50 p-4">
         {/* Sidebar */}
         <aside className="w-64 h-full bg-white shadow-md rounded-lg p-4">
-          <h2 className="text-lg font-bold text-[#7C4775]">Forum Categories</h2>
+          <h2 className="text-lg font-bold text-[#4A90E2]">Forum Categories</h2>
           <div className="mt-4 space-y-2">
             {forums.map((forum) => (
               <div
                 key={forum.id}
                 onClick={() => handleForumClick(forum.id)}
-                className={`p-2 rounded-lg cursor-pointer transition-all duration-200 hover:bg-[#A27A9C] ${
+                className={`p-2 rounded-lg cursor-pointer transition-all duration-200 hover:bg-[#7FB3E3] ${
                   selectedForumId === forum.id
-                    ? "bg-[#f1caeb] text-white"
+                    ? "bg-[#cce4f7] text-white"
                     : "bg-white"
                 }`}
               >
-                <h3 className="font-semibold text-[#7C4775]">{forum.name}</h3>
+                <h3 className="font-semibold text-[#4A90E2]">{forum.name}</h3>
                 <p className="text-sm text-gray-600">
                   Created by: {forum.createdBy}
                 </p>
@@ -120,18 +120,17 @@ function CommunityForum() {
           </div>
           <button
             onClick={handleCreateClick}
-            className="mt-4 w-full bg-[#7C4775] text-white py-2 rounded-lg hover:bg-[#A27A9C] transition"
+            className="mt-4 w-full bg-[#4A90E2] text-white py-2 rounded-lg hover:bg-[#7FB3E3] transition"
           >
             Create New Forum
           </button>
         </aside>
 
         {/* Main Content */}
-        {/* Main Content */}
         <main className="flex-1 flex flex-col h-full bg-white shadow-md rounded-lg p-4 ml-4">
           {/* Forum Header */}
           <header className="mb-4">
-            <h1 className="text-2xl text-[#7C4775] font-bold">
+            <h1 className="text-2xl text-[#4A90E2] font-bold">
               {selectedForum.name}
             </h1>
             <p className="text-gray-600">
@@ -158,7 +157,7 @@ function CommunityForum() {
                     />
                   </div>
                   <div>
-                    <span className="font-semibold text-[#7C4775]">
+                    <span className="font-semibold text-[#4A90E2]">
                       {comment.user}
                     </span>
                     {comment.messages.map((message, index) => (
@@ -184,7 +183,7 @@ function CommunityForum() {
             />
             <button
               onClick={handleSendMessage}
-              className="px-4 py-2 bg-[#7C4775] text-white rounded hover:bg-[#A27A9C] transition"
+              className="px-4 py-2 bg-[#4A90E2] text-white rounded hover:bg-[#7FB3E3] transition"
             >
               Send
             </button>
@@ -193,9 +192,9 @@ function CommunityForum() {
 
         {/* Popup for New Forum */}
         {showPopup && (
-          <div className="fixed inset-0 bg-purple-800 bg-opacity-50 flex items-center justify-center">
-            <div className="bg-lavender-100 p-6 rounded shadow-lg w-96">
-              <h2 className="text-xl font-semibold mb-4 text-purple-700">
+          <div className="fixed inset-0 bg-blue-800 bg-opacity-50 flex items-center justify-center">
+            <div className="bg-blue-100 p-6 rounded shadow-lg w-96">
+              <h2 className="text-xl font-semibold mb-4 text-blue-700">
                 Create New Forum
               </h2>
               <input
@@ -209,13 +208,13 @@ function CommunityForum() {
               <div className="flex justify-end space-x-4">
                 <button
                   onClick={handleCancelClick}
-                  className="px-4 py-2 bg-purple-300 rounded hover:bg-purple-400 text-black"
+                  className="px-4 py-2 bg-blue-300 rounded hover:bg-blue-400 text-black"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleDoneClick}
-                  className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
+                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                 >
                   Done
                 </button>

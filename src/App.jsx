@@ -23,6 +23,7 @@ import BankLogin from "./components/Bank/BankLogin";
 import BankHome from "./components/Bank/BankHome";
 import BankChrome from "./components/Bank/BankChrome";
 import BankDesktop from "./components/Bank/BankDesktop";
+import FAQPage from "./components/FAQPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -43,11 +44,12 @@ function App() {
           <Route path="/gmail-chrome" element={<GmailChrome />} />
           <Route path="/url-education" element={<URLEducation />} />
           <Route path="/community" element={<CommunityForum />} />
-          <Route path="/neft" element={<BankForm />} />
+          <Route path="/bank-neft" element={<BankForm />} />
           <Route path="/bank-login" element={<BankLogin />} />
           <Route path="/bank-home" element={<BankHome />} />
           <Route path="/bank-chrome" element={<BankChrome />} />
           <Route path="/bank-desktop" element={<BankDesktop />} />
+          <Route path="/faq" element={<FAQPage />} />
         </Routes>
       </Router>
       {/* Change */}

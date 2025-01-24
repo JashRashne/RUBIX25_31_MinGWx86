@@ -5,7 +5,6 @@ import meet from "../assets/meet.png";
 import bank from "../assets/bank.png";
 import printer from "../assets/printer.png";
 import url from "../assets/url.png";
-import bank from '../assets/bank.png'
 import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
@@ -23,7 +22,9 @@ const Landing = () => {
 
         {/* Navbar */}
         <nav className="relative z-10 flex justify-between items-center p-4 px-8 bg-white shadow-md">
-          <div className="text-gray-800 text-2xl font-bold">Technik</div>
+          <div className="text-gray-800 text-2xl font-bold">
+            Technik
+          </div>
           <ul className="flex space-x-6 text-gray-800">
             <li>
               <a href="/community" className="hover:underline">
@@ -52,10 +53,10 @@ const Landing = () => {
         <div className="flex-grow flex items-center justify-center z-10 text-center">
           <div>
             <h1 className="text-4xl font-bold text-white">
-              Residential Elderly Care For All Your Needs
+              Empowering the Elderly with Digital Inclusion
             </h1>
             <p className="mt-4 text-gray-50">
-              Because they can no longer take care of themselves
+              Bridging the digital divide for our elderly community
             </p>
             <button className="mt-6 px-6 py-2 bg-orange-500 text-white font-medium rounded hover:bg-orange-600">
               Get Started
@@ -66,7 +67,8 @@ const Landing = () => {
         {/* Footer Info */}
         <div className="absolute bottom-6 w-full text-center z-10">
           <p className="text-gray-600">
-            Technik is trusted by over 500,000+ users across the US and Canada!
+            Elderly Digital Hub is trusted by over 500,000+ seniors across the
+            world!
           </p>
         </div>
       </div>
@@ -74,37 +76,37 @@ const Landing = () => {
       {/* Tools Section */}
       <div className="bg-gray-50 py-16 px-8 text-center">
         <h2 className="text-2xl font-semibold text-gray-900 mb-8">
-          Our Essential Tools
+          Our Essential Digital Tools
         </h2>
         <div className="flex flex-col md:flex-row justify-center gap-12 mt-4">
           {/* Tool Item Component */}
           {[
             {
-              name: "Gmail",
+              name: "Email",
               imgSrc: gmailLogo,
               difficulty: "Easy",
               navigationPlace: "/gmail-desktop",
             },
             {
-              name: "Google Meet",
+              name: "Video Calls",
               imgSrc: meet,
               difficulty: "Medium",
               navigationPlace: "/meet-desktop",
             },
             {
-              name: "Printer",
+              name: "Printing Documents",
               imgSrc: printer,
               difficulty: "Easy",
               navigationPlace: "/",
             },
             {
-              name: "Banking",
+              name: "Online Banking",
               imgSrc: bank,
               difficulty: "Medium",
               navigationPlace: "/bank-desktop",
             },
             {
-              name: "URL Safety",
+              name: "Internet Safety",
               imgSrc: url,
               difficulty: "Service",
               navigationPlace: "/url-scan",
@@ -147,11 +149,11 @@ const Landing = () => {
               1
             </div>
             <h3 className="mt-6 text-xl font-semibold text-gray-800">
-              Describe Needs
+              Explore Digital Tools
             </h3>
             <p className="mt-4 text-gray-600 leading-relaxed">
-              Easily describe your needs with a few clicks, and we'll help match
-              you with the perfect solution.
+              Discover a wide range of tools to help seniors engage with the
+              digital world.
             </p>
           </div>
 
@@ -161,11 +163,11 @@ const Landing = () => {
               2
             </div>
             <h3 className="mt-6 text-xl font-semibold text-gray-800">
-              Choose Your Hero
+              Choose What Fits You
             </h3>
             <p className="mt-4 text-gray-600 leading-relaxed">
-              Select from a curated list of trusted professionals to tackle your
-              challenge effortlessly.
+              Pick the tools and resources that fit your needs and comfort
+              level.
             </p>
           </div>
 
@@ -178,8 +180,8 @@ const Landing = () => {
               Stay Connected
             </h3>
             <p className="mt-4 text-gray-600 leading-relaxed">
-              Communicate seamlessly and stay updated at every step of the
-              process.
+              Stay in touch with loved ones and the world through digital
+              communication.
             </p>
           </div>
         </div>
@@ -189,24 +191,23 @@ const Landing = () => {
       <div className="py-24 px-8 flex flex-col md:flex-row items-center justify-center">
         <div className="md:w-1/2 space-y-6 max-w-xl">
           <h2 className="text-4xl font-semibold text-gray-900 leading-tight">
-            Learn Why Families Choose Elderly Care
+            Why Families Choose the Elderly Digital Hub
           </h2>
           <p className="text-lg text-gray-700">
-            There are many variations of passages of Lorem Ipsum available, but
-            the majority have suffered alteration in some form, by injected
-            humour, or randomised words which don’t look even slightly
-            believable.
+            With the growing importance of technology, it's essential that
+            elderly individuals stay digitally connected. Our hub empowers
+            seniors with the knowledge and tools they need to navigate the
+            digital world.
           </p>
           <p className="mt-4 text-lg text-gray-700">
-            You need to be sure there isn’t anything embarrassing hidden in the
-            middle of text. All the Lorem Ipsum generators on the Internet tend
-            to repeat predefined chunks as necessary.
+            Our services bridge the digital divide, ensuring no elderly person
+            gets left behind in the rapidly evolving digital age.
           </p>
         </div>
         <div className="md:w-1/2 mt-8 md:mt-0 rounded-lg shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
           <img
-            src="https://via.placeholder.com/500x300"
-            alt="Elderly Care"
+            src="https://www.un.org/sites/un2.un.org/files/styles/large-article-image-style-16-9/public/field/image/2022/05/pexels-kampus-production-7551582_0.jpg"
+            alt="Digital Inclusion"
             className="w-full h-full object-cover"
           />
         </div>
@@ -218,18 +219,17 @@ const Landing = () => {
           What Families Are Saying
         </h2>
         <p className="text-lg text-gray-700 italic max-w-2xl mx-auto">
-          “We’ve been using the elderly care services for the past year, and the
-          experience has been life-changing. The caregivers are kind,
-          compassionate, and truly treat our loved one like family. We feel so
-          relieved knowing they’re in good hands. Highly recommended!”
+          “Using the Elderly Digital Hub has been an amazing experience for my
+          father. He now confidently uses email, video calls, and even online
+          banking! I couldn’t be more grateful for this service.”
         </p>
-        <p className="mt-6 text-orange-600 font-semibold text-xl">Jyoti Shah</p>
-        <p className="text-gray-600 mt-2">Daughter of Mr. Sandeep Shah</p>
+        <p className="mt-6 text-orange-600 font-semibold text-xl">Ravi Patel</p>
+        <p className="text-gray-600 mt-2">Son of Mrs. Meera Patel</p>
       </div>
 
       {/* Footer Section */}
       <div className="bg-gray-900 text-white py-8 text-center">
-        <p>Copyright © technik.com. All Rights Reserved.</p>
+        <p>Copyright © elderlydigitalhub.com. All Rights Reserved.</p>
       </div>
     </div>
   );

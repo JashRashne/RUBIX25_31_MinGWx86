@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import arrow from "../../assets/arrow1.png";
+import Navbar from "../Navbar";
 
 const BankLogin = () => {
   const [step, setStep] = useState(1);
@@ -67,7 +68,111 @@ const BankLogin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center relative">
+      <div className={`${step == 1 ? "flex" : "hidden"}`}>
+        <img
+          src={arrow}
+          height={50}
+          width={100}
+          style={{ transform: "scaleX(-1)", rotate: "270deg" }}
+          className="absolute left-[210px] top-[150px]  z-[210]"
+          alt=""
+        />
+
+        <div className="h-[200px] w-[350px] bg-white border-2 border-black absolute left-[1px] bottom-[130px] rounded-xl flex flex-col z-20">
+          <div className="w-full h-[60%]  flex flex-col items-center justify-center">
+            <span className="font-black text-lg pt-2">ENTER USERNAME</span>
+            <span className=" mb-2 text-sm text-center px-4 leading-tight">
+              This is where you enter your unique username so as to access your
+              own bank account for performing online banking.
+            </span>
+          </div>
+          <div className="w-full h-[40%]  flex items-center justify-center gap-2">
+            <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+              <i class="ri-volume-up-line text-xl"></i>
+              <span className="px-3 text-xm font-bold">LISTEN</span>
+            </div>
+            <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+              <i class="ri-skip-right-line text-xl"></i>
+              <span
+                className="px-3 text-xm font-bold"
+                onClick={() => {
+                  setStep(2);
+                }}
+              >
+                NEXT
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={`${step == 2 ? "flex" : "hidden"}`}>
+        <img
+          src={arrow}
+          height={50}
+          width={100}
+          style={{ transform: "scaleX(-1)", rotate: "270deg" }}
+          className="absolute left-[210px] top-[240px]  z-[210]"
+          alt=""
+        />
+
+        <div className="h-[200px] w-[350px] bg-white border-2 border-black absolute left-[1px] bottom-[50px] rounded-xl flex flex-col z-20">
+          <div className="w-full h-[60%]  flex flex-col items-center justify-center">
+            <span className="font-black text-lg pt-2">ENTER PASSWORD</span>
+            <span className=" mb-2 text-sm text-center px-4 leading-tight">
+              This is where you enter your secure password inorder to access the
+              bank's website.
+            </span>
+          </div>
+          <div className="w-full h-[40%]  flex items-center justify-center gap-2">
+            <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+              <i class="ri-volume-up-line text-xl"></i>
+              <span className="px-3 text-xm font-bold">LISTEN</span>
+            </div>
+            <div className="w-[40%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+              <i class="ri-skip-right-line text-xl"></i>
+              <span
+                className="px-3 text-xm font-bold"
+                onClick={() => {
+                  setStep(3);
+                }}
+              >
+                NEXT
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={`${step == 3 ? "flex" : "hidden"}`}>
+        <img
+          src={arrow}
+          height={50}
+          width={100}
+          className="absolute right-[420px] bottom-[250px] rotate-[210deg] z-20"
+          alt=""
+        />
+
+        <div className="h-[200px] w-[350px] bg-white border-2 border-black absolute right-[100px] top-[50px] rounded-xl flex flex-col z-20">
+          <div className="w-full h-[60%]  flex flex-col items-center justify-center">
+            <span className="font-black text-lg pt-2">ENTER CAPTCHA CODE</span>
+            <span className=" mb-0 text-sm text-center px-4 leading-tight">
+              CAPTCHA is a test to verify if a user is human or a bot, often by
+              solving puzzles. It helps prevent automated abuse on websites. After entering code , click <b>LOGIN</b>
+            </span>
+          </div>
+          <div className="w-full h-[40%]  flex items-center justify-center gap-2">
+            <div className="w-[80%] h-[80%] bg-gray-100 border-2 border-gray-600 rounded-xl flex items-center justify-center hover:scale-95 cursor-pointer">
+              <i class="ri-volume-up-line text-xl"></i>
+              <span className="px-3 text-xm font-bold">
+                LISTEN INSTRUCTION{" "}
+              </span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+
       <div className="bg-white shadow-lg rounded-lg p-8 w-[30rem] max-w-full">
         <h2 className="text-2xl font-semibold text-center text-blue-600 mb-6">
           Bank Portal Login
